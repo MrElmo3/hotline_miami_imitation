@@ -7,13 +7,15 @@ public class Player : MonoBehaviour
 	[SerializeField] private float speed;
 
 	private Vector2 currentVelocity;
-	private Rigidbody2D rb;
-	Vector2 movementVector;
+	private Vector2 movementVector;
 
+	private Rigidbody2D rb;
+	private Animator animator;
 
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		animator = GetComponentInChildren<Animator>();
 	}
 
 	void Update()
@@ -30,8 +32,9 @@ public class Player : MonoBehaviour
 	private void Move(Vector2 target)
 	{
 		movementVector = Vector2.SmoothDamp(movementVector, target, ref currentVelocity, acelerationTime);
-
 		rb.velocity = movementVector * speed;
+
+		animator.SetBool("isMoving", target.magnitude!= 0);
 	}
 
 	private void Aim()
