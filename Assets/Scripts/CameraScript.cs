@@ -3,33 +3,37 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-	[SerializeField] float maxRotation = 10;
-	private GameObject CameraPoint1;
-	private GameObject CameraPoint2;
+	[SerializeField] private float maxRotation = 4;
 
+	private GameObject[] CameraPoints;
+	private bool existLimits;
 
 	private GameObject target;
 
 	void Start()
 	{
 		target = GameObject.FindGameObjectWithTag("Player");
-		CameraPoint1 = GameObject.FindGameObjectWithTag("CameraPoint1");
-		CameraPoint2 = GameObject.FindGameObjectWithTag("CameraPoint2");
+		CameraPoints = GameObject.FindGameObjectsWithTag("CameraPoint");
+		existLimits = CameraPoints.Length == 2 ? true : false;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		CalcPosition();
-		CalcInclination();
+
+		if(existLimits){
+			CalcInclination();
+		}
 	}
 
 	private void CalcInclination(){
 		Vector2 diagonal = new Vector2(
-			math.abs(CameraPoint1.transform.position.x - CameraPoint2.transform.position.x)/2,
-			math.abs(CameraPoint1.transform.position.y - CameraPoint2.transform.position.y)/2);
-		Vector2 centerMap = diagonal + new Vector2(CameraPoint2.transform.position.x, CameraPoint2.transform.position.y);
-		Vector2 distanceCenter = new Vector2(target.transform.position.x,target.transform.position.y) - centerMap;
+			math.abs(CameraPoints[1].transform.position.x - CameraPoints[0].transform.position.x)/2,
+			math.abs(CameraPoints[1].transform.position.y - CameraPoints[0].transform.position.y)/2);
+
+		Vector2 centerMap = diagonal + new Vector2(CameraPoints[0].transform.position.x, CameraPoints[0].transform.position.y);
+		Vector2 distanceCenter = new Vector2(transform.position.x,transform.position.y) - centerMap;
 
 		float multiplicator = (distanceCenter.x / diagonal.x) * (distanceCenter.y / diagonal.y);
 		

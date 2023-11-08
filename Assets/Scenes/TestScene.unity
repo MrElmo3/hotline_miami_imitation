@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 243373599}
   m_Layer: 0
   m_Name: CameraPoint2
-  m_TagString: CameraPoint2
+  m_TagString: CameraPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 811179886}
   m_Layer: 0
   m_Name: CameraPoint1
-  m_TagString: CameraPoint1
+  m_TagString: CameraPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1418,7 +1418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8093545449243685411, guid: 19a71a2c46f4712c2883884fe4f6fa99, type: 3}
       propertyPath: maxRotation
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8127549083324174850, guid: 19a71a2c46f4712c2883884fe4f6fa99, type: 3}
       propertyPath: m_LocalPosition.x
