@@ -700,6 +700,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6108950956004423798, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
+      propertyPath: dispersionAngle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9011119302273653202, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: m_Name
       value: Player

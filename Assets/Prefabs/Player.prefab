@@ -160,6 +160,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3897308148649945763, guid: 4c19e13881e967b49a0a7efc80033b3f, type: 3}
   timeBetweenShots: 0.5
   shootingInDelay: 0
+  weaponType: 1
+  dispersionAngle: 8
 --- !u!58 &7942453663003359783
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -1,9 +1,16 @@
 using System;
 using UnityEngine;
 
+
+public enum WeaponType
+{
+	Handgun,
+	Shotgun,
+	Automatic,
+	Melee
+}
 public class Player : MonoBehaviour
 {
-
 	[SerializeField] private float acelerationTime;
 	[SerializeField] private float speed;
 
@@ -11,6 +18,8 @@ public class Player : MonoBehaviour
 	[SerializeField] private GameObject bulletPrefab;
 	[SerializeField] private float timeBetweenShots;
 	[SerializeField] private bool shootingInDelay;
+	[SerializeField] private WeaponType weaponType;
+	[SerializeField] private int dispersionAngle;
 	private float nextTimeToShot;
 	private bool isShooting;
 
@@ -31,6 +40,7 @@ public class Player : MonoBehaviour
 	{
 		Aim();
 		GetInput();
+		GetAttackInput();
 		TryShoot();
 	}
 
@@ -61,24 +71,50 @@ public class Player : MonoBehaviour
 		float xAxis = Input.GetAxisRaw("Horizontal");
 		float yAxis = Input.GetAxisRaw("Vertical");
 		inputVector = new Vector2(xAxis, yAxis);
-		isShooting = Input.GetMouseButtonDown(0);
-        if (Input.GetMouseButtonDown(0))
-        {
-			shootingInDelay = true;
-        }
-		
 	}
 
+	private void GetAttackInput()
+    {
+		if( weaponType != WeaponType.Automatic)
+        {
+			isShooting = Input.GetMouseButtonDown(0);
+			if (Input.GetMouseButtonDown(0))
+			{
+				shootingInDelay = true;
+			}
+		}
+        else
+        {
+			isShooting = Input.GetMouseButton(0);
+		}
+    }
 	private void TryShoot()
 	{
-		if (isShooting || shootingInDelay)
-		{
-			if(Time.time >= nextTimeToShot)
-            {
-				nextTimeToShot = Time.time + timeBetweenShots;
-				Instantiate(bulletPrefab, firePivot.transform.position, firePivot.transform.rotation);
-				shootingInDelay = false;
-            }
+		if(weaponType == WeaponType.Handgun)
+        {
+			if (isShooting || shootingInDelay)
+			{
+				if (Time.time >= nextTimeToShot)
+				{
+					nextTimeToShot = Time.time + timeBetweenShots;
+					Instantiate(bulletPrefab, firePivot.transform.position, firePivot.transform.rotation);
+					shootingInDelay = false;
+				}
+			}
+		}
+		else if(weaponType == WeaponType.Shotgun)
+        {
+			if (isShooting || shootingInDelay)
+			{
+				if (Time.time >= nextTimeToShot)
+				{
+					nextTimeToShot = Time.time + timeBetweenShots;
+					Instantiate(bulletPrefab, firePivot.transform.position, firePivot.transform.rotation * Quaternion.Euler(0,0, dispersionAngle));
+					Instantiate(bulletPrefab, firePivot.transform.position, firePivot.transform.rotation);
+					Instantiate(bulletPrefab, firePivot.transform.position, firePivot.transform.rotation * Quaternion.Euler(0,0, dispersionAngle*-1));
+					shootingInDelay = false;
+				}
+			}
 		}
 	}
 
