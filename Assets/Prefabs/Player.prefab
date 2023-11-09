@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acelerationTime: 0.1
-  speed: 15
+  speed: 18
   firePivot: {fileID: 7321478720488209390}
   bulletPrefab: {fileID: 3897308148649945763, guid: 4c19e13881e967b49a0a7efc80033b3f, type: 3}
   timeBetweenShots: 0.5
