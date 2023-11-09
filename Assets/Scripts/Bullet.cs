@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.transform.CompareTag("Player"))
+        if (!collision.transform.CompareTag("Player") && !collision.transform.CompareTag("Bullet"))
         {
             if (collision.transform.CompareTag("Enemie"))
             {
@@ -36,7 +36,6 @@ public class Bullet : MonoBehaviour
     IEnumerator DestroyBullet()
     {
         yield return new WaitForSeconds(timeToDestroy);
-        Debug.LogWarning("Coroutine didn't stop");
         Destroy(this.gameObject);
     }
 }
