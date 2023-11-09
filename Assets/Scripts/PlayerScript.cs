@@ -55,7 +55,7 @@ public class Player : MonoBehaviour{
 	void Start(){
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponentInChildren<Animator>();
-		angleIncrement = dispersionAngle / numBullets*1.0f;
+		//angleIncrement = dispersionAngle / numBullets*1.0f; //! ZERO DIVISION: corrigelo p
 	}
 
 	void Update(){
