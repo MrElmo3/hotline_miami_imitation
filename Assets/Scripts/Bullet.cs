@@ -2,40 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
-{
-    [SerializeField] float bulletSpeed;
-    [SerializeField] private float timeToDestroy;
-    private Rigidbody2D rb;
+public class Bullet : MonoBehaviour{
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        StartCoroutine("DestroyBullet");
-    }
+	[SerializeField] float bulletSpeed;
+	[SerializeField] private float timeToDestroy;
+	private Rigidbody2D rb;
 
-    void FixedUpdate()
-    {
-        rb.velocity = this.transform.up * bulletSpeed;
-    }
+	void Start(){
+		rb = GetComponent<Rigidbody2D>();
+		StartCoroutine("DestroyBullet");
+	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.transform.CompareTag("Player") && !collision.transform.CompareTag("Bullet"))
-        {
-            if (collision.transform.CompareTag("Enemie"))
-            {
-                Destroy(collision.gameObject);
-                StopCoroutine("DestroyBullet");
-            }
-            Destroy(this.gameObject);
-        }
-        
-    }
+	void FixedUpdate(){
+		rb.velocity = this.transform.up * bulletSpeed;
+	}
 
-    IEnumerator DestroyBullet()
-    {
-        yield return new WaitForSeconds(timeToDestroy);
-        Destroy(this.gameObject);
-    }
+	private void OnTriggerEnter2D(Collider2D collision){
+		if (!collision.transform.CompareTag("Player") && !collision.transform.CompareTag("Bullet")){
+			if (collision.transform.CompareTag("Enemie")){
+				Destroy(collision.gameObject);
+			}
+			Destroy(this.gameObject);
+			StopCoroutine("DestroyBullet");
+		}
+		
+	}
+
+	IEnumerator DestroyBullet(){
+		yield return new WaitForSeconds(timeToDestroy);
+		Destroy(this.gameObject);
+	}
 }
