@@ -9,7 +9,6 @@ TagManager:
   - Handgun
   - Shotgun
   - Automatic
-  - CameraPoint
   layers:
   - Default
   - TransparentFX

@@ -5,36 +5,38 @@ public class CameraScript : MonoBehaviour{
 
 	[SerializeField] private float maxRotation = 4;
 
-	private GameObject[] CameraPoints;
-	private bool existLimits;
+	private GameObject CameraPointU;
+	private GameObject CameraPointL;
+	private bool existPoints;
 	private GameObject target;
 
 	void Start(){
 		target = GameObject.FindGameObjectWithTag("Player");
-		CameraPoints = GameObject.FindGameObjectsWithTag("CameraPoint");
-		existLimits = CameraPoints.Length == 2 ? true : false;
+		CameraPointL = GameObject.Find("CameraPointL");
+		CameraPointU = GameObject.Find("CameraPointU");
+		existPoints = CameraPointL && CameraPointU;
 	}
 
 	void Update(){
 		CalcPosition();
 
-		if(existLimits)
+		if(existPoints)
 			CalcInclination();
 	}
 
 	private void CalcInclination(){
 		Vector3 actualPosition = transform.position;
-		Vector3 cameraPointL = CameraPoints[0].transform.position;
-		Vector3 cameraPointU = CameraPoints[1].transform.position;
+		Vector3 positionL = CameraPointL.transform.position;
+		Vector3 positionU = CameraPointU.transform.position;
 
 		Vector2 diagonal = new Vector2(
-			math.abs(cameraPointU.x - cameraPointL.x)/2,
-			math.abs(cameraPointU.y - cameraPointL.y)/2);
+			math.abs(positionU.x - positionL.x)/2,
+			math.abs(positionU.y - positionL.y)/2);
 
 		Vector2 centerMap = diagonal + 
 			new Vector2(
-				cameraPointL.x, 
-				cameraPointL.y
+				positionL.x, 
+				positionL.y
 				);
 
 		Vector2 distanceCenter = new Vector2(actualPosition.x,actualPosition.y) - centerMap;
