@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class PickUpWeapons : MonoBehaviour
 {
-	[SerializeField] private Player player;
+	[SerializeField] private PlayerWeapon pWeapon;
 
 	private void OnTriggerEnter2D(Collider2D collision){
 		if (collision.transform.CompareTag("Handgun"))
-			player.WeaponType = WeaponType.Handgun;
+			pWeapon.WeaponType = WeaponType.Handgun;
 
 		else if (collision.transform.CompareTag("Shotgun"))
-			player.WeaponType = WeaponType.Shotgun;
+			pWeapon.WeaponType = WeaponType.Shotgun;
 			
 		else if (collision.transform.CompareTag("Automatic"))
-			player.WeaponType = WeaponType.Automatic;
+			pWeapon.WeaponType = WeaponType.Automatic;
 	}
 }
