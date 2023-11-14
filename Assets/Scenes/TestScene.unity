@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 1857052455}
   - component: {fileID: 1857052454}
   - component: {fileID: 1857052453}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3099,17 +3099,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3792722152628836646, guid: 084fe70a62d6a6fba88032d1053b5eeb, type: 3}
+      propertyPath: VisionAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792722152628836646, guid: 084fe70a62d6a6fba88032d1053b5eeb, type: 3}
+      propertyPath: VisionRange
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4967623484822695798, guid: 084fe70a62d6a6fba88032d1053b5eeb, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7109455644971440639, guid: 084fe70a62d6a6fba88032d1053b5eeb, type: 3}
+      propertyPath: VisionConeMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a965c963621e8b619173cb80a99eee9, type: 2}
+    - target: {fileID: 7109455644971440639, guid: 084fe70a62d6a6fba88032d1053b5eeb, type: 3}
+      propertyPath: VisionConeResolution
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7109455644971440639, guid: 084fe70a62d6a6fba88032d1053b5eeb, type: 3}
+      propertyPath: VisionObstructingLayer.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7279857445662895033, guid: 084fe70a62d6a6fba88032d1053b5eeb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.811401
+      value: 13.54
       objectReference: {fileID: 0}
     - target: {fileID: 7279857445662895033, guid: 084fe70a62d6a6fba88032d1053b5eeb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.28
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 7279857445662895033, guid: 084fe70a62d6a6fba88032d1053b5eeb, type: 3}
       propertyPath: m_LocalPosition.z
