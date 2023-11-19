@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    [SerializeField] private PatrolState patrolState;
-    [SerializeField] private IdleState idleState;
-    [SerializeField] private MonoBehaviour initialState;
+    public PatrolState patrolState;
+    public IdleState idleState;
+    public MonoBehaviour alertState;
+    public MonoBehaviour initialState;
 
     private MonoBehaviour currentState;
     void Start()
@@ -14,7 +15,7 @@ public class StateMachine : MonoBehaviour
         EnableState(initialState);
     }
 
-    private void EnableState(MonoBehaviour nextState)
+    public void EnableState(MonoBehaviour nextState)
     {
         if (currentState != null) currentState.enabled = false;
         currentState = nextState;

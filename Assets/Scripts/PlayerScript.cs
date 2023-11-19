@@ -34,6 +34,11 @@ public class Player : MonoBehaviour{
 		movementVector = Vector2.SmoothDamp(movementVector, inputVector, ref currentVelocity, acelerationTime);
 		rb.velocity = movementVector * speed;
 
+		if(rb.velocity.magnitude < 0.01f)
+        {
+			rb.velocity = Vector3.zero;
+        }
+
 		animator.SetBool("isMoving", inputVector.magnitude!= 0);
 	}
 

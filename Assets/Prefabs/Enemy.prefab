@@ -94,9 +94,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7279857445662895033}
   - component: {fileID: 5639745234734684760}
+  - component: {fileID: 4428952659570090762}
+  - component: {fileID: 1352639692041013132}
+  - component: {fileID: 3037904777852834352}
+  - component: {fileID: 8633190634648696566}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Enemie
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,6 +158,64 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.15
+--- !u!114 &4428952659570090762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967623484822695798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d8156c1850f424d85ac79a17fbd9ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolState: {fileID: 1352639692041013132}
+  idleState: {fileID: 3037904777852834352}
+  alertState: {fileID: 8633190634648696566}
+  initialState: {fileID: 1352639692041013132}
+--- !u!114 &1352639692041013132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967623484822695798}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6330c5dec996c74b93173f98dff652e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  speed: 5
+--- !u!114 &3037904777852834352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967623484822695798}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48863ad013a4c984cb17f627141b6a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8633190634648696566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967623484822695798}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee9fbc956aaeaf4da39670894b07837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8516936187084621966
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,8 +345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VisionConeMaterial: {fileID: 2100000, guid: 9a965c963621e8b619173cb80a99eee9, type: 2}
-  VisionRange: 5
-  VisionAngle: 90
+  VisionRange: 15
+  VisionAngle: 60
   VisionObstructingLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -18,14 +18,16 @@ public class Bullet : MonoBehaviour{
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision){
-		if (!collision.transform.CompareTag("Player") && !collision.transform.CompareTag("Bullet")){
-			if (collision.transform.CompareTag("Enemie")){
-				Destroy(collision.gameObject);
-			}
+		if (collision.transform.CompareTag("Enemy")){
+			Destroy(collision.gameObject);
 			Destroy(this.gameObject);
 			StopCoroutine("DestroyBullet");
 		}
-		
+		else if (collision.transform.CompareTag("Enviroment"))
+		{
+			Destroy(this.gameObject);
+			StopCoroutine("DestroyBullet");
+		}
 	}
 
 	IEnumerator DestroyBullet(){

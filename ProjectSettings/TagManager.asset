@@ -4,11 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemie
   - Bullet
   - Handgun
   - Shotgun
   - Automatic
+  - Enemy
+  - Enviroment
   layers:
   - Default
   - TransparentFX

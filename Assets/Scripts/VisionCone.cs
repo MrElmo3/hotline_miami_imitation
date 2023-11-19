@@ -21,6 +21,8 @@ public class VisionCone : MonoBehaviour{
 	//Create all of these variables, most of them are self explanatory, but for the ones that aren't i've added a comment to clue you in on what they do
 	//for the ones that you dont understand dont worry, just follow along
 
+	public bool IsSeeingPlayer { get; private set; }
+
 	void Start(){
 		transform.AddComponent<MeshRenderer>().material = VisionConeMaterial;
 		MeshFilter_ = transform.AddComponent<MeshFilter>();
@@ -85,8 +87,13 @@ public class VisionCone : MonoBehaviour{
 
 	private void OnTriggerEnter2D(Collider2D other) {
 		if(other.tag == "Player"){
-			Debug.Log(true);
+			IsSeeingPlayer = true;
 		}
 	}
+    private void OnTriggerExit2D(Collider2D other) {
+		if(other.tag == "Player"){
+			IsSeeingPlayer = false;
+        }
+    }
 
 }
