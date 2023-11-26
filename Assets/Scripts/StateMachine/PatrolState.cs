@@ -6,9 +6,9 @@ public class PatrolState : MonoBehaviour
 {
     [SerializeField] Transform[] Waypoints;
     [SerializeField] private float speed;
+    [SerializeField] private float _rotationSpeed;
 
     private StateMachine stateMachine;
-    private SpriteRenderer spriteRenderer;
     private VisionCone visionCone;
 
     private int waypointIndex;
@@ -16,7 +16,6 @@ public class PatrolState : MonoBehaviour
     void Start()
     {
         stateMachine = GetComponent<StateMachine>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         visionCone = GetComponentInChildren<VisionCone>();
     }
 
@@ -24,6 +23,7 @@ public class PatrolState : MonoBehaviour
     private void Update()
     {
         Move();
+        RotateTowardsTarget();
         if (visionCone.IsSeeingPlayer)
         {
             stateMachine.EnableState(stateMachine.alertState);
@@ -37,6 +37,20 @@ public class PatrolState : MonoBehaviour
         {
             waypointIndex = (waypointIndex + 1) % Waypoints.Length;
         }
+    }
+
+    private void RotateTowardsTarget()
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(transform.forward, GetDirection());
+        Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+
+        transform.rotation = rotation;
+    }
+
+    private Vector2 GetDirection()
+    {
+        Vector2 distance = Waypoints[waypointIndex].position - transform.position;
+        return distance.normalized;
     }
 
 

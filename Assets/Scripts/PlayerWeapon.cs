@@ -44,11 +44,13 @@ public class PlayerWeapon : MonoBehaviour
     }
     void Start()
     {
+        WeaponType = WeaponType.Handgun;
         angleIncrement = dispersionAngle / numBullets*1.0f;
     }
 
     void Update()
     {
+        angleIncrement = dispersionAngle / numBullets * 1.0f;
         GetAttackInput();
         TryShoot();
     }

@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class IdleState : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private StateMachine stateMachine;
+    private VisionCone visionCone;
+
     void Start()
     {
-        
+        stateMachine = GetComponent<StateMachine>();
+        visionCone = GetComponentInChildren<VisionCone>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (visionCone.IsSeeingPlayer)
+        {
+            stateMachine.EnableState(stateMachine.alertState);
+        }
     }
 }

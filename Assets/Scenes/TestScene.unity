@@ -467,26 +467,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3024157426310793226, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
-      propertyPath: ammo
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3024157426310793226, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
-      propertyPath: weaponType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3024157426310793226, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
-      propertyPath: dispersionAngle
-      value: 37
-      objectReference: {fileID: 0}
-    - target: {fileID: 5036384214583456297, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5141449305800698508, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9011119302273653202, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: m_Name
       value: Player
