@@ -16,7 +16,7 @@ public class VisionCone : MonoBehaviour{
 	private Mesh VisionConeMesh;
 	private MeshFilter MeshFilter_;
 
-	private EdgeCollider2D VisionConeCollider;
+	private PolygonCollider2D VisionConeCollider;
 
 	//Create all of these variables, most of them are self explanatory, but for the ones that aren't i've added a comment to clue you in on what they do
 	//for the ones that you dont understand dont worry, just follow along
@@ -26,7 +26,7 @@ public class VisionCone : MonoBehaviour{
 	void Start(){
 		transform.AddComponent<MeshRenderer>().material = VisionConeMaterial;
 		MeshFilter_ = transform.AddComponent<MeshFilter>();
-		VisionConeCollider = transform.AddComponent<EdgeCollider2D>();
+		VisionConeCollider = transform.AddComponent<PolygonCollider2D>();
 		VisionConeCollider.isTrigger = true;
 		VisionConeMesh = new Mesh();
 		VisionAngle *= Mathf.Deg2Rad;
@@ -90,10 +90,10 @@ public class VisionCone : MonoBehaviour{
 			IsSeeingPlayer = true;
 		}
 	}
-    private void OnTriggerExit2D(Collider2D other) {
+	private void OnTriggerExit2D(Collider2D other) {
 		if(other.tag == "Player"){
 			IsSeeingPlayer = false;
-        }
-    }
+		}
+	}
 
 }

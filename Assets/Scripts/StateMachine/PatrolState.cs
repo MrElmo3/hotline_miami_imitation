@@ -22,8 +22,10 @@ public class PatrolState : MonoBehaviour
 
     private void Update()
     {
-        Move();
-        RotateTowardsTarget();
+        if(Waypoints.Length > 0){
+            Move();
+            RotateTowardsTarget();
+        }
         if (visionCone.IsSeeingPlayer)
         {
             stateMachine.EnableState(stateMachine.alertState);
