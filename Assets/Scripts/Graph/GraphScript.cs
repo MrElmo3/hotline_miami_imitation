@@ -8,10 +8,6 @@ public class GraphScript : MonoBehaviour{
 	
 	void Start(){
 		nodes = new List<GameObject>(GameObject.FindGameObjectsWithTag("GraphNode"));
-		
-	}
-
-	private void Update() {
 		CreateConections();
 	}
 
