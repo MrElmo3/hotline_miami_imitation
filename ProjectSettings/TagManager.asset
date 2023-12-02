@@ -10,6 +10,8 @@ TagManager:
   - Automatic
   - Enemy
   - Enviroment
+  - GraphNode
+  - Enemie
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - UI
   - Walls
   - Bullet
-  - 
+  - Graph
   - 
   - 
   - 
