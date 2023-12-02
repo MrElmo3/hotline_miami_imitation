@@ -11,7 +11,7 @@ TagManager:
   - Enemy
   - Enviroment
   - GraphNode
-  - Enemie
+  - Graph
   layers:
   - Default
   - TransparentFX

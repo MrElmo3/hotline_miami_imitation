@@ -14,4 +14,8 @@ public class NodeScript : MonoBehaviour
 			return;
 		conections.Add(target);
 	}
+
+	public List<GameObject> GetConections(){
+		return conections;
+	}
 }
