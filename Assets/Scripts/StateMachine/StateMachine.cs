@@ -12,6 +12,7 @@ public class StateMachine : MonoBehaviour
     private MonoBehaviour currentState;
     void Start()
     {
+        GameManager.Instance.EnemiesInGame++;
         EnableState(initialState);
     }
 
@@ -20,5 +21,9 @@ public class StateMachine : MonoBehaviour
         if (currentState != null) currentState.enabled = false;
         currentState = nextState;
         currentState.enabled = true;
+    }
+    private void OnDestroy()
+    {
+        GameManager.Instance.EnemiesInGame--;
     }
 }

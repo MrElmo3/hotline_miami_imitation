@@ -19,12 +19,23 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private int dispersionAngle;
     [SerializeField] private int numBullets = 1;
     [SerializeField] private WeaponType weaponType;
+    [SerializeField] private AmmoText ammoText;
+    [SerializeField] private GameManager gameManager;
 
     private bool shootingInDelay;
     private bool isShooting;
     private float nextTimeToShot;
     private float angleIncrement;
-    public int ammo;
+    private int ammo;
+
+    public int Ammo { 
+        get => ammo;
+        private set
+        {
+            ammo = value;
+            ammoText.UpdateText(value);
+        }
+    }
 
     public WeaponType WeaponType
     {
@@ -35,11 +46,24 @@ public class PlayerWeapon : MonoBehaviour
             weaponType = value;
 
             if (value == WeaponType.Automatic)
+            {
+                GameManager.Instance.PlayerHasWeapon = true;
                 ammo = 24;
+                ammoText.SetText(ammo, ammo);
+            }               
             else if (value == WeaponType.Shotgun)
+            {
+                GameManager.Instance.PlayerHasWeapon = true;
                 ammo = 6;
+                ammoText.SetText(ammo, ammo);
+            }
+               
             else if (value == WeaponType.Handgun)
+            {
+                GameManager.Instance.PlayerHasWeapon = true;
                 ammo = 8;
+                ammoText.SetText(ammo, ammo);
+            }
         }
     }
     void Start()
@@ -91,7 +115,7 @@ public class PlayerWeapon : MonoBehaviour
                 nextTimeToShot = Time.time + timeBetweenShots;
                 Instantiate(bulletPrefab, position, rotation);
                 shootingInDelay = false;
-                ammo--;
+                Ammo--;
             }
         }
         else if (WeaponType == WeaponType.Shotgun)
@@ -129,7 +153,7 @@ public class PlayerWeapon : MonoBehaviour
                         rotation * rotateAngle);
                 }
                 shootingInDelay = false;
-                ammo--;
+                Ammo--;
             }
         }
         else if (WeaponType == WeaponType.Automatic)
@@ -138,7 +162,7 @@ public class PlayerWeapon : MonoBehaviour
             {
                 nextTimeToShot = Time.time + automaticFireRate;
                 Instantiate(bulletPrefab, position, rotation);
-                ammo--;
+                Ammo--;
             }
         }
     }
