@@ -1,35 +1,30 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class AlertState : MonoBehaviour{
 
-	[SerializeField] private float speed = 12;
-	[SerializeField] private float _rotationSpeed = 270;
+	[SerializeField] private float speed = 12f;
+	[SerializeField] private float _rotationSpeed = 270f;
 	
 	private GraphScript graph;
 	private StateMachine stateMachine;
 	private GameObject player;
 
-	private List<GameObject> path;
+	[SerializeField] private List<GameObject> path;
 	private int index;
 	private bool isSearching;
 
-	private void Start() {
-		stateMachine = GetComponent<StateMachine>();
-		graph = GameObject.FindWithTag("Graph").GetComponent<GraphScript>();
-		player = GameObject.FindWithTag("Player");
-	}
-	
-
 	private void OnEnable() {
+		if(player == null){
+			stateMachine = GetComponent<StateMachine>();
+			graph = GameObject.FindWithTag("Graph").GetComponent<GraphScript>();
+			player = GameObject.FindWithTag("Player");
+		}
 		isSearching = true;
 		index = 0;
-		try{
-			Search();
-		}catch{
-			Debug.Log("No se ha encontrado un camino o se a detectado al jugador");
-		}
+		Search();
 	}
 
 	private void Update() {
@@ -48,8 +43,10 @@ public class AlertState : MonoBehaviour{
 				Move(path[index].transform.position);
 				RotateTowards(path[index].transform.position);
 
-				if((transform.position - path[0].transform.position).magnitude < 0.05f)
-					stateMachine.EnableState(stateMachine.patrolState);
+				if((transform.position - path[0].transform.position).magnitude < 0.05f){
+					stateMachine.playerSound = false;
+					stateMachine.EnableState(stateMachine.GetPreviousState());
+				}
 				
 				if((transform.position - path[index].transform.position).magnitude < 0.05f)
 					index--;
@@ -58,7 +55,6 @@ public class AlertState : MonoBehaviour{
 		else{
 			Shoot();
 		}
-	
 	}
 	
 	private void Move( Vector3 target){

@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour{
 	}
 
 	void FixedUpdate(){
-		rb.velocity = this.transform.up * bulletSpeed;
+		rb.velocity = this.transform.right * bulletSpeed;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision){

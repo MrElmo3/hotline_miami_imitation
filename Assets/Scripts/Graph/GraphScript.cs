@@ -113,6 +113,7 @@ public class GraphScript : MonoBehaviour{
 			aux = cameFrom[aux];
 			
 		}
+		path.Insert(0, start);
 
 		return path;
 	}

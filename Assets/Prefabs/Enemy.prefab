@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 4428952659570090762}
   - component: {fileID: 1352639692041013132}
   - component: {fileID: 3037904777852834352}
-  - component: {fileID: 8633190634648696566}
+  - component: {fileID: -6517970450283000553}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -236,8 +236,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolState: {fileID: 1352639692041013132}
   idleState: {fileID: 3037904777852834352}
-  alertState: {fileID: 8633190634648696566}
-  initialState: {fileID: 1352639692041013132}
+  alertState: {fileID: -6517970450283000553}
+  initialState: {fileID: 0}
+  currentState: {fileID: 0}
   playerSound: 0
   playerView: 0
 --- !u!114 &1352639692041013132
@@ -267,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48863ad013a4c984cb17f627141b6a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8633190634648696566
+--- !u!114 &-6517970450283000553
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
-  _rotationSpeed: 2
+  _rotationSpeed: 270
 --- !u!1 &8516936187084621966
 GameObject:
   m_ObjectHideFlags: 0

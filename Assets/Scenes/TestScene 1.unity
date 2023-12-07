@@ -385,7 +385,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 4812147061447205461}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48863ad013a4c984cb17f627141b6a15, type: 3}
   m_Name: 
@@ -1046,6 +1046,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1468639806109009498, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3024157426310793226, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
+      propertyPath: weaponType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9011119302273653202, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
@@ -4781,7 +4785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3037904777852834352, guid: 084fe70a62d6a6fba88032d1053b5eeb, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4428952659570090762, guid: 084fe70a62d6a6fba88032d1053b5eeb, type: 3}
       propertyPath: initialState

@@ -13,15 +13,12 @@ public class Player : MonoBehaviour{
 	private Rigidbody2D rb;
 	private Animator animator;
 
-	
-
 	void Start(){
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponentInChildren<Animator>();
 	}
 
 	void Update(){
-
 		Aim();
 		GetInput();
 	}
@@ -34,10 +31,9 @@ public class Player : MonoBehaviour{
 		movementVector = Vector2.SmoothDamp(movementVector, inputVector, ref currentVelocity, acelerationTime);
 		rb.velocity = movementVector * speed;
 
-		if(rb.velocity.magnitude < 0.01f)
-        {
+		if(rb.velocity.magnitude < 0.01f){
 			rb.velocity = Vector3.zero;
-        }
+		}
 
 		animator.SetBool("isMoving", inputVector.magnitude!= 0);
 	}
@@ -48,7 +44,7 @@ public class Player : MonoBehaviour{
 
 		float angle = Mathf.Atan2(distance.y, distance.x) * Mathf.Rad2Deg;
 
-		transform.rotation = Quaternion.Euler(0, 0, angle-90);
+		transform.rotation = Quaternion.Euler(0, 0, angle);
 	}
 	
 	private void  GetInput(){

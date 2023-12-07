@@ -28,6 +28,8 @@ public class PlayerWeapon : MonoBehaviour
 	private float angleIncrement;
 	private int ammo;
 
+	private readonly Animator animator;
+
 	public int Ammo { 
 		get => ammo;
 		private set
@@ -37,52 +39,43 @@ public class PlayerWeapon : MonoBehaviour
 		}
 	}
 
-	public WeaponType WeaponType
-	{
+	public WeaponType WeaponType {
 		get => weaponType;
 
-		set
-		{
+		set{
 			weaponType = value;
 
-			if (value == WeaponType.Automatic)
-			{
+			if (value == WeaponType.Automatic){
 				GameManager.Instance.PlayerHasWeapon = true;
 				ammo = 24;
 				ammoText.SetText(ammo, ammo);
 			}               
-			else if (value == WeaponType.Shotgun)
-			{
+			else if (value == WeaponType.Shotgun){
 				GameManager.Instance.PlayerHasWeapon = true;
 				ammo = 6;
 				ammoText.SetText(ammo, ammo);
 			}
 			   
-			else if (value == WeaponType.Handgun)
-			{
+			else if (value == WeaponType.Handgun){
 				GameManager.Instance.PlayerHasWeapon = true;
-				ammo = 8;
+				ammo = 30; //just for testing propouses
 				ammoText.SetText(ammo, ammo);
 			}
 		}
 	}
-	void Start()
-	{
+	void Start(){
 		WeaponType = WeaponType.Handgun;
 		angleIncrement = dispersionAngle / numBullets*1.0f;
 	}
 
-	void Update()
-	{
+	void Update(){
 		angleIncrement = dispersionAngle / numBullets * 1.0f;
 		GetAttackInput();
 		TryShoot();
 	}
 
-	private void GetAttackInput()
-	{
-		if (WeaponType != WeaponType.Automatic)
-		{
+	private void GetAttackInput(){
+		if (WeaponType != WeaponType.Automatic){
 			isShooting = Input.GetMouseButtonDown(0);
 
 			if (Input.GetMouseButtonDown(0) && ammo > 0)
@@ -93,14 +86,12 @@ public class PlayerWeapon : MonoBehaviour
 		isShooting = Input.GetMouseButton(0);
 	}
 
-	private void TryShoot()
-	{
+	private void TryShoot(){
 		Vector3 adjustmentX;
 		Vector3 adjustmentY;
 
-		Vector3 position = firePivot.transform.position;
-		Quaternion rotation = firePivot.transform.rotation;
-		Vector2 scale = bulletPrefab.transform.localScale;
+		firePivot.transform.GetPositionAndRotation(out Vector3 position, out Quaternion rotation);
+        Vector2 scale = bulletPrefab.transform.localScale;
 		float angleRad = angleIncrement * Mathf.Deg2Rad;
 		float sin;
 		float cos;
@@ -108,23 +99,19 @@ public class PlayerWeapon : MonoBehaviour
 
 		bool canShoot = Time.time >= nextTimeToShot && ammo > 0;
 		
-		if (WeaponType == WeaponType.Handgun)
-		{
-			if ((isShooting || shootingInDelay) && canShoot)
-			{
+		if (WeaponType == WeaponType.Handgun){
+			if (isShooting && canShoot){
 				nextTimeToShot = Time.time + timeBetweenShots;
 				Instantiate(bulletPrefab, position, rotation);
 				shootingInDelay = false;
 				Ammo--;
 			}
 		}
-		else if (WeaponType == WeaponType.Shotgun)
-		{
-			if ((isShooting || shootingInDelay) && canShoot)
-			{
+		else if (WeaponType == WeaponType.Shotgun){
+			if ((isShooting || shootingInDelay) && canShoot){
 				nextTimeToShot = Time.time + timeBetweenShots;
-				for (int i = 0; i < numBullets / 2; i++)
-				{
+				
+				for (int i = 0; i < numBullets / 2; i++){
 					sin = Mathf.Sin(angleRad * (i + 1));
 					cos = Mathf.Cos(angleRad * (i + 1));
 					rotateAngle = Quaternion.Euler(0, 0, angleIncrement * (i + 1));
@@ -136,11 +123,10 @@ public class PlayerWeapon : MonoBehaviour
 						position - adjustmentY - adjustmentX,
 						rotation * rotateAngle );
 				}
-
+				animator.SetTrigger("Shoot");
 				Instantiate(bulletPrefab, position, rotation);
 
-				for (int i = 0; i < numBullets / 2; i++)
-				{
+				for (int i = 0; i < numBullets / 2; i++){
 					sin = Mathf.Sin(angleRad * (i + 1));
 					cos = Mathf.Cos(angleRad * (i + 1));
 					rotateAngle = Quaternion.Euler(0, 0, angleIncrement * (-i - 1));
@@ -156,11 +142,10 @@ public class PlayerWeapon : MonoBehaviour
 				Ammo--;
 			}
 		}
-		else if (WeaponType == WeaponType.Automatic)
-		{
-			if (isShooting && canShoot)
-			{
+		else if (WeaponType == WeaponType.Automatic){
+			if (isShooting && canShoot){
 				nextTimeToShot = Time.time + automaticFireRate;
+				animator.SetTrigger("Shoot");
 				Instantiate(bulletPrefab, position, rotation);
 				Ammo--;
 			}
