@@ -18,11 +18,6 @@ public class VisionCone : MonoBehaviour{
 
 	private PolygonCollider2D VisionConeCollider;
 
-	//Create all of these variables, most of them are self explanatory, but for the ones that aren't i've added a comment to clue you in on what they do
-	//for the ones that you dont understand dont worry, just follow along
-
-	public bool IsSeeingPlayer { get; private set; }
-
 	void Start(){
 		transform.AddComponent<MeshRenderer>().material = VisionConeMaterial;
 		MeshFilter_ = transform.AddComponent<MeshFilter>();
@@ -86,14 +81,16 @@ public class VisionCone : MonoBehaviour{
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
-		if(other.tag == "Player"){
-			IsSeeingPlayer = true;
+		if(other.CompareTag("Player")){
+			gameObject.GetComponentInParent<StateMachine>().playerView = true;
+		}
+		if(other.CompareTag("PlayerSound")){
+			gameObject.GetComponentInParent<StateMachine>().playerSound = true;
 		}
 	}
 	private void OnTriggerExit2D(Collider2D other) {
-		if(other.tag == "Player"){
-			IsSeeingPlayer = false;
+		if(other.CompareTag("Player")){
+			gameObject.GetComponentInParent<StateMachine>().playerView = false;
 		}
 	}
-
 }

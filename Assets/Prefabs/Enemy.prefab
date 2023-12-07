@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 7279857445662895033}
+  m_Father: {fileID: 8602707184089982729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5323025261923796678
 SpriteRenderer:
@@ -84,6 +84,70 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1313634718083886368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8602707184089982729}
+  m_Layer: 0
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8602707184089982729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313634718083886368}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 5161906010080565380}
+  - {fileID: 1619641872735682421}
+  m_Father: {fileID: 7279857445662895033}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4419252315792222708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5810019293977636779}
+  m_Layer: 0
+  m_Name: FirePivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5810019293977636779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4419252315792222708}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7279857445662895033}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4967623484822695798
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,11 +180,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 5161906010080565380}
-  - {fileID: 1619641872735682421}
   - {fileID: 5079792587010589779}
+  - {fileID: 8602707184089982729}
+  - {fileID: 5810019293977636779}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &5639745234734684760
@@ -174,6 +238,8 @@ MonoBehaviour:
   idleState: {fileID: 3037904777852834352}
   alertState: {fileID: 8633190634648696566}
   initialState: {fileID: 1352639692041013132}
+  playerSound: 0
+  playerView: 0
 --- !u!114 &1352639692041013132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Waypoints: []
-  speed: 5
+  speed: 8
   _rotationSpeed: 180
 --- !u!114 &3037904777852834352
 MonoBehaviour:
@@ -213,6 +279,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee9fbc956aaeaf4da39670894b07837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 12
+  _rotationSpeed: 2
 --- !u!1 &8516936187084621966
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,12 +306,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8516936187084621966}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7279857445662895033}
+  m_Father: {fileID: 8602707184089982729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5833697913142237951
 SpriteRenderer:
@@ -342,8 +410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VisionConeMaterial: {fileID: 2100000, guid: 9a965c963621e8b619173cb80a99eee9, type: 2}
-  VisionRange: 15
-  VisionAngle: 60
+  VisionRange: 30
+  VisionAngle: 30
   VisionObstructingLayer:
     serializedVersion: 2
     m_Bits: 64

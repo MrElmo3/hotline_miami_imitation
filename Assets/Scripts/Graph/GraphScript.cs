@@ -27,6 +27,21 @@ public class GraphScript : MonoBehaviour{
 		return target;
 	}
 
+	public GameObject GetNearNode(Vector2 position){
+		float minDistance = int.MaxValue;
+		GameObject target = null;
+
+		foreach (GameObject node in nodes){
+			float auxDistance = Vector2.Distance(node.transform.position, position);
+
+			if(minDistance > auxDistance){
+				target = node;
+				minDistance = auxDistance;
+			}
+		}
+		return target;
+	}
+
 	public void CreateConections(){
 		for (int i = 0; i < nodes.Count; i++){
 			for (int j = i+1; j < nodes.Count; j++){

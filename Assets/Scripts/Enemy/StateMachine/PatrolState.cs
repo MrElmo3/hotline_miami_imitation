@@ -9,13 +9,11 @@ public class PatrolState : MonoBehaviour
 	[SerializeField] private float _rotationSpeed;
 
 	private StateMachine stateMachine;
-	private VisionCone visionCone;
 
 	private int waypointIndex;
 
-	void Start(){
+	void OnEnable(){
 		stateMachine = GetComponent<StateMachine>();
-		visionCone = GetComponentInChildren<VisionCone>();
 		waypointIndex = 0;
 	}
 
@@ -26,7 +24,7 @@ public class PatrolState : MonoBehaviour
 			Move();
 			RotateTowardsTarget();
 		}
-		if (visionCone.IsSeeingPlayer)
+		if (stateMachine.playerView || stateMachine.playerSound)
 		{
 			stateMachine.EnableState(stateMachine.alertState);
 		}
