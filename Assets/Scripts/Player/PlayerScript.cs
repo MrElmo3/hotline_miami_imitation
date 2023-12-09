@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour{
+public class PlayerScript : MonoBehaviour{
 
 	[SerializeField] private float acelerationTime;
 	[SerializeField] private float speed;
+
+	[SerializeField] private bool isDead;
 
 	private Vector2 currentVelocity;
 	private Vector2 movementVector;
@@ -14,6 +16,7 @@ public class Player : MonoBehaviour{
 	private Animator animator;
 
 	void Start(){
+		isDead = false;
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponentInChildren<Animator>();
 	}
@@ -28,6 +31,8 @@ public class Player : MonoBehaviour{
 	}
 	
 	private void Move(){
+		if(!IsAlive())
+			return;
 		movementVector = Vector2.SmoothDamp(movementVector, inputVector, ref currentVelocity, acelerationTime);
 		rb.velocity = movementVector * speed;
 
@@ -39,6 +44,8 @@ public class Player : MonoBehaviour{
 	}
 
 	private void Aim(){
+		if(!IsAlive())
+			return;
 		Vector2 mousePosition = Input.mousePosition;
 		Vector2 distance = Camera.main.ScreenToWorldPoint(mousePosition) - transform.position;
 
@@ -54,4 +61,13 @@ public class Player : MonoBehaviour{
 		inputVector = new Vector2(xAxis, yAxis);
 	}
 
+	public void Die(){
+		isDead = true;
+		animator.SetBool("isDead", true);
+		GameManager.instance.PlayerIsDead = true;
+	}
+
+	public bool IsAlive(){
+		return !isDead;
+	}
 }

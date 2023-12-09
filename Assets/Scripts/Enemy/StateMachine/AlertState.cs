@@ -7,7 +7,14 @@ public class AlertState : MonoBehaviour{
 
 	[SerializeField] private float speed = 12f;
 	[SerializeField] private float _rotationSpeed = 270f;
-	
+
+	[SerializeField] private GameObject bulletPrefab;
+	[SerializeField] private float _reactionTime = 0.25f;
+	[SerializeField] private float timeBetweenShots = 0.5f;
+	private Transform firePivot;
+	private float lastTimeShot = 0;
+	private AudioSource pistolShot;
+
 	private GraphScript graph;
 	private StateMachine stateMachine;
 	private GameObject player;
@@ -27,33 +34,42 @@ public class AlertState : MonoBehaviour{
 		Search();
 	}
 
+	private void Start() {
+		firePivot = transform.GetChild(0);
+		pistolShot = GetComponent<AudioSource>();
+	}
+
 	private void Update() {
-		if(!stateMachine.playerView){
-			if(index < path.Count && isSearching){
+		//Busqueda
+		if(!stateMachine.playerView && player.GetComponent<PlayerScript>().IsAlive()){
+			if(index < path.Count){
 				Move(path[index].transform.position);
 				RotateTowards(path[index].transform.position);
 				
 				if((transform.position - path[index].transform.position).magnitude < 0.05f)
 					index++;
 			}
-			else{
-				//hace el recorrido inverso al path y retorna al estado anterior
+			else
 				isSearching = false;
-				index = index >= path.Count ? path.Count - 1 : index;
-				Move(path[index].transform.position);
-				RotateTowards(path[index].transform.position);
-
-				if((transform.position - path[0].transform.position).magnitude < 0.05f){
-					stateMachine.playerSound = false;
-					stateMachine.EnableState(stateMachine.GetPreviousState());
-				}
-				
-				if((transform.position - path[index].transform.position).magnitude < 0.05f)
-					index--;
-			}
 		}
-		else{
+
+		//Disparo
+		else if(stateMachine.playerView && player.GetComponent<PlayerScript>().IsAlive()){
 			Shoot();
+		}
+		
+		else if(!isSearching || !player.GetComponent<PlayerScript>().IsAlive()){
+			//hace el recorrido inverso al path y retorna al estado anterior
+			index = index >= path.Count ? path.Count - 1 : index;
+			Move(path[index].transform.position);
+			RotateTowards(path[index].transform.position);
+			if((transform.position - path[0].transform.position).magnitude < 0.05f){
+				stateMachine.playerSound = false;
+				stateMachine.EnableState(stateMachine.GetPreviousState());
+			}
+			
+			if((transform.position - path[index].transform.position).magnitude < 0.05f)
+				index--;
 		}
 	}
 	
@@ -70,6 +86,16 @@ public class AlertState : MonoBehaviour{
 
 	private void Shoot(){
 		RotateTowards(player.transform.position);
+		firePivot.transform.GetPositionAndRotation(out Vector3 position, out Quaternion rotation);
+		rotation = Quaternion.Euler(0, 0, rotation.eulerAngles.z + 90);
+		bool canShoot = Time.time >= lastTimeShot + timeBetweenShots + _reactionTime;
+
+		if (canShoot){
+			lastTimeShot = Time.time;
+			GameObject bullet = Instantiate(bulletPrefab, position, rotation);
+			bullet.GetComponent<EnemyBullet>().enabled = true;
+			pistolShot.Play();
+		}
 	}
 
 	private void Search(){

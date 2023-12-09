@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
 	[SerializeField] private UIController uIController;
 
-	public static GameManager Instance;
+	public static GameManager instance;
 	[SerializeField]
 	private int enemiesInGame;
 	private bool playerHasWeapon;
@@ -54,23 +54,18 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	private void Awake()
-	{
-		if (Instance == null)
-		{
-			Instance = this;
+	private void Awake(){
+		if (instance == null){
+			instance = this;
 		}
 	}
 
-	private void Update()
-	{
+	private void Update(){
 		ResetGame();
 	}
 
-	private void ResetGame()
-	{
-		if (playerIsDead && Input.GetKeyDown(KeyCode.R))
-		{
+	private void ResetGame(){
+		if (playerIsDead && Input.GetKeyDown(KeyCode.R)){
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 		

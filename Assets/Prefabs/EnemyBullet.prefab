@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8751573774045754756}
   - component: {fileID: 8959626617372430723}
   - component: {fileID: 2595253954567369354}
-  - component: {fileID: 8183341521816267106}
+  - component: {fileID: -5431431700080497965}
   m_Layer: 7
-  m_Name: Bullet
+  m_Name: EnemyBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2, y: 1}
   m_Direction: 1
---- !u!114 &8183341521816267106
+--- !u!114 &-5431431700080497965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,10 +106,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3897308148649945763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da0daf0f33184d84bb75585c3195765d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5542281270b04fd4e87b429a757b84d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 90
+  bulletSpeed: 120
   timeToDestroy: 2
 --- !u!1 &5851982678272928354
 GameObject:

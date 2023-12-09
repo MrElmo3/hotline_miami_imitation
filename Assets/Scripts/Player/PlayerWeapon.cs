@@ -28,7 +28,8 @@ public class PlayerWeapon : MonoBehaviour
 	private float angleIncrement;
 	private int ammo;
 
-	private readonly Animator animator;
+	private AudioSource pistolShot;
+	private Animator animator;
 
 	public int Ammo { 
 		get => ammo;
@@ -46,24 +47,26 @@ public class PlayerWeapon : MonoBehaviour
 			weaponType = value;
 
 			if (value == WeaponType.Automatic){
-				GameManager.Instance.PlayerHasWeapon = true;
+				GameManager.instance.PlayerHasWeapon = true;
 				ammo = 24;
 				ammoText.SetText(ammo, ammo);
 			}               
 			else if (value == WeaponType.Shotgun){
-				GameManager.Instance.PlayerHasWeapon = true;
+				GameManager.instance.PlayerHasWeapon = true;
 				ammo = 6;
 				ammoText.SetText(ammo, ammo);
 			}
 			   
 			else if (value == WeaponType.Handgun){
-				GameManager.Instance.PlayerHasWeapon = true;
+				GameManager.instance.PlayerHasWeapon = true;
 				ammo = 30; //just for testing propouses
 				ammoText.SetText(ammo, ammo);
 			}
 		}
 	}
 	void Start(){
+		animator = GetComponent<Animator>();
+		pistolShot = GetComponent<AudioSource>();
 		WeaponType = WeaponType.Handgun;
 		angleIncrement = dispersionAngle / numBullets*1.0f;
 	}
@@ -71,7 +74,8 @@ public class PlayerWeapon : MonoBehaviour
 	void Update(){
 		angleIncrement = dispersionAngle / numBullets * 1.0f;
 		GetAttackInput();
-		TryShoot();
+		if(gameObject.GetComponent<PlayerScript>().IsAlive())
+			TryShoot();	
 	}
 
 	private void GetAttackInput(){
@@ -102,7 +106,10 @@ public class PlayerWeapon : MonoBehaviour
 		if (WeaponType == WeaponType.Handgun){
 			if (isShooting && canShoot){
 				nextTimeToShot = Time.time + timeBetweenShots;
-				Instantiate(bulletPrefab, position, rotation);
+				GameObject bullet = Instantiate(bulletPrefab, position, rotation);
+				bullet.GetComponent<Bullet>().enabled = true;
+				animator.SetTrigger("Shoot");
+				pistolShot.Play();
 				shootingInDelay = false;
 				Ammo--;
 			}

@@ -46,6 +46,9 @@ public class CameraScript : MonoBehaviour{
 	}
 
 	private void CalcPosition(){
+		if(!target.GetComponent<PlayerScript>().IsAlive())
+			return;
+		
 		transform.position = new Vector3(
 			target.transform.position.x,
 			target.transform.position.y,

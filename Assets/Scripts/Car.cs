@@ -8,7 +8,7 @@ public class Car : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
-            GameManager.Instance.EndLevel();
+            GameManager.instance.EndLevel();
         }
     }
 }

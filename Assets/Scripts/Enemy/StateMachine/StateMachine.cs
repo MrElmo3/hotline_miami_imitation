@@ -16,7 +16,7 @@ public class StateMachine : MonoBehaviour
 	public bool playerView;
 
 	void Start(){
-		//GameManager.Instance.EnemiesInGame++;
+		GameManager.instance.EnemiesInGame++;
 		EnableState(initialState);
 	}
 
@@ -36,6 +36,6 @@ public class StateMachine : MonoBehaviour
 	}
 
 	private void OnDestroy(){
-		GameManager.Instance.EnemiesInGame--;
+		GameManager.instance.EnemiesInGame--;
 	}
 }

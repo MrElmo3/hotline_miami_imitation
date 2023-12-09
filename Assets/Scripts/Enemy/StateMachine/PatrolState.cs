@@ -5,14 +5,14 @@ using UnityEngine;
 public class PatrolState : MonoBehaviour
 {
 	[SerializeField] Transform[] Waypoints;
-	[SerializeField] private float speed;
-	[SerializeField] private float _rotationSpeed;
+	[SerializeField] private float speed = 8.0f;
+	[SerializeField] private float _rotationSpeed = 180;
 
 	private StateMachine stateMachine;
 
 	private int waypointIndex;
 
-	void OnEnable(){
+	void Start(){
 		stateMachine = GetComponent<StateMachine>();
 		waypointIndex = 0;
 	}
