@@ -17,7 +17,7 @@ public class IdleState : MonoBehaviour
 	void Update(){
 		if(transform.rotation.eulerAngles != rotation)
 			RotateTowards(rotation);
-		if (stateMachine.playerView || stateMachine.playerSound){
+		if ((stateMachine.playerView || stateMachine.playerSound) && stateMachine.GetPlayer().IsAlive()){
 			stateMachine.EnableState(stateMachine.alertState);
 		}
 	}

@@ -18,20 +18,17 @@ public class PatrolState : MonoBehaviour
 	}
 
 
-	private void Update()
-	{
+	private void Update(){
 		if(Waypoints.Length > 0){
 			Move();
 			RotateTowardsTarget();
 		}
-		if (stateMachine.playerView || stateMachine.playerSound)
-		{
+		if ((stateMachine.playerView || stateMachine.playerSound) && stateMachine.GetPlayer().IsAlive()){
 			stateMachine.EnableState(stateMachine.alertState);
 		}
 	}
 
-	private void Move()
-	{
+	private void Move(){
 		transform.position = Vector2.MoveTowards(transform.position, Waypoints[waypointIndex].position, speed * Time.deltaTime);
 		if (this.transform.position == Waypoints[waypointIndex].position)
 		{
@@ -39,20 +36,15 @@ public class PatrolState : MonoBehaviour
 		}
 	}
 
-	private void RotateTowardsTarget()
-	{
+	private void RotateTowardsTarget(){
 		Quaternion targetRotation = Quaternion.LookRotation(transform.forward, GetDirection());
 		Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
 
 		transform.rotation = rotation;
 	}
 
-	private Vector2 GetDirection()
-	{
+	private Vector2 GetDirection(){
 		Vector2 distance = Waypoints[waypointIndex].position - transform.position;
 		return distance.normalized;
 	}
-
-
-
 }

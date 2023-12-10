@@ -12,11 +12,17 @@ public class StateMachine : MonoBehaviour
 	private MonoBehaviour currentState;
 	private MonoBehaviour previousState;
 
+	private PlayerScript player;
 	public bool playerSound; //
 	public bool playerView;
 
 	void Start(){
-		GameManager.instance.EnemiesInGame++;
+		player = GameObject.FindWithTag("Player").GetComponent<PlayerScript>();
+		try{
+			GameManager.instance.EnemiesInGame++;
+		}catch{
+			Debug.Log("No se ha encontrado el GameManager");
+		}
 		EnableState(initialState);
 	}
 
@@ -25,6 +31,10 @@ public class StateMachine : MonoBehaviour
 		previousState = currentState;
 		currentState = nextState;
 		currentState.enabled = true;
+	}
+
+	public PlayerScript GetPlayer(){
+		return player;
 	}
 
 	public MonoBehaviour GetCurrentState(){
@@ -36,6 +46,10 @@ public class StateMachine : MonoBehaviour
 	}
 
 	private void OnDestroy(){
-		GameManager.instance.EnemiesInGame--;
+		try{
+			GameManager.instance.EnemiesInGame--;
+		}catch{
+			Debug.Log("No se ha encontrado el GameManager");
+		}
 	}
 }

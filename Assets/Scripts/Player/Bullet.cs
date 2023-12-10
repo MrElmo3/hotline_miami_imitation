@@ -11,19 +11,16 @@ public class Bullet : MonoBehaviour{
 	void Start(){
 		rb = GetComponent<Rigidbody2D>();
 		StartCoroutine("DestroyBullet");
-	}
-
-	void FixedUpdate(){
 		rb.velocity = this.transform.right * bulletSpeed;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision){
-		if (collision.transform.CompareTag("Enemy")){
+		if(collision.CompareTag("Enemy")){
 			Destroy(collision.gameObject);
 			Destroy(this.gameObject);
 			StopCoroutine("DestroyBullet");
 		}
-		else if (collision.transform.CompareTag("Enviroment"))
+		else if(collision.transform.CompareTag("Enviroment"))
 		{
 			Destroy(this.gameObject);
 			StopCoroutine("DestroyBullet");

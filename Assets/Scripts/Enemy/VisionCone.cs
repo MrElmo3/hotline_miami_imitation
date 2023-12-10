@@ -84,9 +84,6 @@ public class VisionCone : MonoBehaviour{
 		if(other.CompareTag("Player")){
 			gameObject.GetComponentInParent<StateMachine>().playerView = true;
 		}
-		if(other.CompareTag("PlayerSound")){
-			gameObject.GetComponentInParent<StateMachine>().playerSound = true;
-		}
 	}
 	private void OnTriggerExit2D(Collider2D other) {
 		if(other.CompareTag("Player")){

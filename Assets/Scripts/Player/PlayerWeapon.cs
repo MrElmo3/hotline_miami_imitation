@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WeaponType
-{
+public enum WeaponType{
 	Handgun,
 	Shotgun,
 	Automatic,
 	Melee
 }
 
-public class PlayerWeapon : MonoBehaviour
-{
+public class PlayerWeapon : MonoBehaviour{
 	[SerializeField] private Transform firePivot;
 	[SerializeField] private GameObject bulletPrefab;
+	[SerializeField] private GameObject soundPrefab;
 	[SerializeField] private float timeBetweenShots;
 	[SerializeField] private float automaticFireRate;
 	[SerializeField] private int dispersionAngle;
@@ -33,10 +32,14 @@ public class PlayerWeapon : MonoBehaviour
 
 	public int Ammo { 
 		get => ammo;
-		private set
-		{
+		private set{
 			ammo = value;
-			ammoText.UpdateText(value);
+			try{
+				ammoText.UpdateText(value);
+			}
+			catch{
+				Debug.Log("No se ha encontrado el GameManager");
+			}
 		}
 	}
 
@@ -45,20 +48,22 @@ public class PlayerWeapon : MonoBehaviour
 
 		set{
 			weaponType = value;
-
-			if (value == WeaponType.Automatic){
+			try{
 				GameManager.instance.PlayerHasWeapon = true;
+			}catch{
+				Debug.Log("No se ha encontrado el GameManager");
+			}
+			if (value == WeaponType.Automatic){
+				
 				ammo = 24;
 				ammoText.SetText(ammo, ammo);
 			}               
 			else if (value == WeaponType.Shotgun){
-				GameManager.instance.PlayerHasWeapon = true;
 				ammo = 6;
 				ammoText.SetText(ammo, ammo);
 			}
 			   
 			else if (value == WeaponType.Handgun){
-				GameManager.instance.PlayerHasWeapon = true;
 				ammo = 30; //just for testing propouses
 				ammoText.SetText(ammo, ammo);
 			}
@@ -95,7 +100,7 @@ public class PlayerWeapon : MonoBehaviour
 		Vector3 adjustmentY;
 
 		firePivot.transform.GetPositionAndRotation(out Vector3 position, out Quaternion rotation);
-        Vector2 scale = bulletPrefab.transform.localScale;
+		Vector2 scale = bulletPrefab.transform.localScale;
 		float angleRad = angleIncrement * Mathf.Deg2Rad;
 		float sin;
 		float cos;
@@ -106,8 +111,8 @@ public class PlayerWeapon : MonoBehaviour
 		if (WeaponType == WeaponType.Handgun){
 			if (isShooting && canShoot){
 				nextTimeToShot = Time.time + timeBetweenShots;
-				GameObject bullet = Instantiate(bulletPrefab, position, rotation);
-				bullet.GetComponent<Bullet>().enabled = true;
+				Instantiate(bulletPrefab, position, rotation);
+				Instantiate(soundPrefab, position, rotation);
 				animator.SetTrigger("Shoot");
 				pistolShot.Play();
 				shootingInDelay = false;
