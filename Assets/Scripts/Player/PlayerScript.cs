@@ -63,6 +63,7 @@ public class PlayerScript : MonoBehaviour{
 
 	public void Die(){
 		isDead = true;
+		rb.velocity = Vector2.zero;
 		animator.SetBool("isDead", true);
 		GameManager.instance.PlayerIsDead = true;
 	}

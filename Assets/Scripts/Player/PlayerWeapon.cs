@@ -21,7 +21,6 @@ public class PlayerWeapon : MonoBehaviour{
 	[SerializeField] private AmmoText ammoText;
 	[SerializeField] private GameManager gameManager;
 
-	private bool shootingInDelay;
 	private bool isShooting;
 	private float nextTimeToShot;
 	private float angleIncrement;
@@ -64,7 +63,7 @@ public class PlayerWeapon : MonoBehaviour{
 			}
 			   
 			else if (value == WeaponType.Handgun){
-				ammo = 30; //just for testing propouses
+				ammo = 8; //just for testing propouses
 				ammoText.SetText(ammo, ammo);
 			}
 		}
@@ -86,10 +85,6 @@ public class PlayerWeapon : MonoBehaviour{
 	private void GetAttackInput(){
 		if (WeaponType != WeaponType.Automatic){
 			isShooting = Input.GetMouseButtonDown(0);
-
-			if (Input.GetMouseButtonDown(0) && ammo > 0)
-				shootingInDelay = true;
-
 			return;
 		}
 		isShooting = Input.GetMouseButton(0);
@@ -98,7 +93,6 @@ public class PlayerWeapon : MonoBehaviour{
 	private void TryShoot(){
 		Vector3 adjustmentX;
 		Vector3 adjustmentY;
-
 		firePivot.transform.GetPositionAndRotation(out Vector3 position, out Quaternion rotation);
 		Vector2 scale = bulletPrefab.transform.localScale;
 		float angleRad = angleIncrement * Mathf.Deg2Rad;
@@ -115,43 +109,42 @@ public class PlayerWeapon : MonoBehaviour{
 				Instantiate(soundPrefab, position, rotation);
 				animator.SetTrigger("Shoot");
 				pistolShot.Play();
-				shootingInDelay = false;
 				Ammo--;
 			}
 		}
 		else if (WeaponType == WeaponType.Shotgun){
-			if ((isShooting || shootingInDelay) && canShoot){
+			if (isShooting && canShoot){
 				nextTimeToShot = Time.time + timeBetweenShots;
 				
 				for (int i = 0; i < numBullets / 2; i++){
 					sin = Mathf.Sin(angleRad * (i + 1));
 					cos = Mathf.Cos(angleRad * (i + 1));
 					rotateAngle = Quaternion.Euler(0, 0, angleIncrement * (i + 1));
-
-					adjustmentX = firePivot.transform.right * sin  * scale.y;
-					adjustmentY = firePivot.transform.up * (scale.y - cos * scale.y);
+					Debug.Log(sin);
+                    adjustmentX = firePivot.transform.right * (scale.x - cos * scale.x) * -1;
+                    adjustmentY = firePivot.transform.up * sin * scale.x;
 
 					Instantiate(bulletPrefab,
-						position - adjustmentY - adjustmentX,
+                        position + adjustmentY + adjustmentX,
 						rotation * rotateAngle );
 				}
 				animator.SetTrigger("Shoot");
 				Instantiate(bulletPrefab, position, rotation);
 
-				for (int i = 0; i < numBullets / 2; i++){
-					sin = Mathf.Sin(angleRad * (i + 1));
-					cos = Mathf.Cos(angleRad * (i + 1));
-					rotateAngle = Quaternion.Euler(0, 0, angleIncrement * (-i - 1));
+                for (int i = 0; i < numBullets / 2; i++)
+                {
+                    sin = Mathf.Sin(angleRad * (i + 1));
+                    cos = Mathf.Cos(angleRad * (i + 1));
+                    rotateAngle = Quaternion.Euler(0, 0, angleIncrement * (-i - 1));
 
-					adjustmentX = firePivot.transform.right * sin * scale.y;
-					adjustmentY = firePivot.transform.up * (scale.y - cos * scale.y);
+                    adjustmentX = firePivot.transform.right * (scale.x - cos * scale.x) * -1;
+                    adjustmentY = firePivot.transform.up* sin * scale.x;
 
-					Instantiate(bulletPrefab,
-						position - adjustmentY + adjustmentX,
-						rotation * rotateAngle);
-				}
-				shootingInDelay = false;
-				Ammo--;
+                    Instantiate(bulletPrefab,
+                        position - adjustmentY + adjustmentX,
+                        rotation * rotateAngle);
+                }
+                Ammo--;
 			}
 		}
 		else if (WeaponType == WeaponType.Automatic){
