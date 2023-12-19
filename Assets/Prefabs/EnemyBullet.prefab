@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 120
   timeToDestroy: 2
+  hitSound: {fileID: 4875604750175432219, guid: b3839908c24e8da43a0d139d0989430e, type: 3}
 --- !u!1 &5851982678272928354
 GameObject:
   m_ObjectHideFlags: 0

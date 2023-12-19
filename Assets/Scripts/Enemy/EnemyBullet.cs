@@ -6,6 +6,7 @@ public class EnemyBullet : MonoBehaviour{
 
 	[SerializeField] float bulletSpeed;
 	[SerializeField] private float timeToDestroy;
+	[SerializeField] GameObject hitSound;
 	private Rigidbody2D rb;
 
 	void Start(){
@@ -19,6 +20,8 @@ public class EnemyBullet : MonoBehaviour{
 
 	private void OnTriggerEnter2D(Collider2D collision){
 		if (collision.transform.CompareTag("Player")){
+			GameObject hit = Instantiate(hitSound, transform.position, Quaternion.identity);
+			Destroy(hit, 2f);
 			collision.gameObject.GetComponent<PlayerScript>().Die();
 			Destroy(this.gameObject);
 			StopCoroutine("DestroyBullet");

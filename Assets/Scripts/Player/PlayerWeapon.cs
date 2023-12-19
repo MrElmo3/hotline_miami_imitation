@@ -20,6 +20,10 @@ public class PlayerWeapon : MonoBehaviour{
 	[SerializeField] private WeaponType weaponType;
 	[SerializeField] private AmmoText ammoText;
 	[SerializeField] private GameManager gameManager;
+	//[SerializeField] private AudioSource shotgunShot;
+	//[SerializeField] private AudioSource rifleShot;
+	[SerializeField] private GameObject shotgunShot;
+	[SerializeField] private GameObject rifleShot;
 
 	private bool isShooting;
 	private float nextTimeToShot;
@@ -27,6 +31,7 @@ public class PlayerWeapon : MonoBehaviour{
 	private int ammo;
 
 	private AudioSource pistolShot;
+	
 	private Animator animator;
 
 	public int Ammo { 
@@ -101,6 +106,7 @@ public class PlayerWeapon : MonoBehaviour{
 		Quaternion rotateAngle;
 
 		bool canShoot = Time.time >= nextTimeToShot && ammo > 0;
+		GameObject sound;
 		
 		if (WeaponType == WeaponType.Handgun){
 			if (isShooting && canShoot){
@@ -129,8 +135,9 @@ public class PlayerWeapon : MonoBehaviour{
 						rotation * rotateAngle );
 				}
 				animator.SetTrigger("Shoot");
-				Instantiate(bulletPrefab, position, rotation);
-
+				sound = Instantiate(bulletPrefab, position, rotation);
+				Destroy(sound, 2f);
+				Instantiate(shotgunShot, position, Quaternion.identity);
                 for (int i = 0; i < numBullets / 2; i++)
                 {
                     sin = Mathf.Sin(angleRad * (i + 1));
@@ -151,6 +158,8 @@ public class PlayerWeapon : MonoBehaviour{
 			if (isShooting && canShoot){
 				nextTimeToShot = Time.time + automaticFireRate;
 				animator.SetTrigger("Shoot");
+				sound = Instantiate(rifleShot, position, Quaternion.identity);
+				Destroy(sound, 2f);
 				Instantiate(bulletPrefab, position, rotation);
 				Ammo--;
 			}
