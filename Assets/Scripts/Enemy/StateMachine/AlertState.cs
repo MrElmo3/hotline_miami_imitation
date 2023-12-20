@@ -103,6 +103,9 @@ public class AlertState : MonoBehaviour{
 		GameObject startNode = graph.GetNearNode(gameObject);
 		GameObject endNode = graph.GetNearNode(stateMachine.GetPlayer().gameObject);
 
+		Debug.Log(startNode.name);
+		Debug.Log(endNode.name);
+
 		path = graph.NearestPath(startNode, endNode);
 	}
 	

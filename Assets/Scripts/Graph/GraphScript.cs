@@ -12,6 +12,10 @@ public class GraphScript : MonoBehaviour{
 		CreateConections();
 	}
 
+	// private void Update() {
+	// 	CreateConections();
+	// }
+
 	public GameObject GetNearNode(GameObject entity){
 		float minDistance = int.MaxValue;
 		GameObject target = null;
