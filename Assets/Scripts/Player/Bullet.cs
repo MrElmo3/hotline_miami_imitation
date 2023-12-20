@@ -13,7 +13,11 @@ public class Bullet : MonoBehaviour{
 		StartCoroutine("DestroyBullet");
 		rb.velocity = this.transform.right * bulletSpeed;
 	}
-
+	void Update()
+    {
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 0.5f, 6);
+		Debug.DrawRay(transform.position, transform.right, Color.red);
+    }
 	private void OnTriggerEnter2D(Collider2D collision){
 		if(collision.CompareTag("Enemy")){
 			Destroy(collision.gameObject);
@@ -22,6 +26,7 @@ public class Bullet : MonoBehaviour{
 		}
 		else if(collision.transform.CompareTag("Enviroment"))
 		{
+			Debug.Log("Chocó con la pared.");
 			Destroy(this.gameObject);
 			StopCoroutine("DestroyBullet");
 		}
