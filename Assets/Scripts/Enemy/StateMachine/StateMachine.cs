@@ -16,6 +16,7 @@ public class StateMachine : MonoBehaviour
 	public bool playerSound; //
 	public bool playerView;
 
+	[SerializeField] private GameObject hitSound;
 	void Start(){
 		player = GameObject.FindWithTag("Player").GetComponent<PlayerScript>();
 		try{
@@ -50,6 +51,14 @@ public class StateMachine : MonoBehaviour
 			GameManager.instance.EnemiesInGame--;
 		}catch{
 			Debug.Log("No se ha encontrado el GameManager");
+		}
+	}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+		if (collision.transform.CompareTag("Bullet"))
+		{
+			GameObject hit = Instantiate(hitSound, player.transform.position, Quaternion.identity);
+			Destroy(hit, 2f);
 		}
 	}
 }

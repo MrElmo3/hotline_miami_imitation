@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour{
 
 	[SerializeField] float bulletSpeed;
 	[SerializeField] private float timeToDestroy;
+	[SerializeField] private GameObject handgun;
 	private Rigidbody2D rb;
 
 	void Start(){
@@ -15,20 +16,30 @@ public class Bullet : MonoBehaviour{
 	}
 	void Update()
     {
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 0.5f, 6);
-		Debug.DrawRay(transform.position, transform.right, Color.red);
+		CheckColission();
     }
+	private void CheckColission()
+    {
+		RaycastHit2D hitf = Physics2D.Raycast(transform.position, transform.right*-1, 1.5f, LayerMask.GetMask("Walls"));
+
+		if (hitf.collider != null)
+		{
+			StopCoroutine("DestroyBullet");
+			Destroy(this.gameObject);
+		}
+	}
 	private void OnTriggerEnter2D(Collider2D collision){
 		if(collision.CompareTag("Enemy")){
-			Destroy(collision.gameObject);
-			Destroy(this.gameObject);
 			StopCoroutine("DestroyBullet");
+			Destroy(collision.gameObject);
+			Instantiate(handgun, collision.transform.position, Quaternion.identity);
+			Destroy(this.gameObject);
 		}
 		else if(collision.transform.CompareTag("Enviroment"))
 		{
-			Debug.Log("Chocó con la pared.");
-			Destroy(this.gameObject);
 			StopCoroutine("DestroyBullet");
+			Destroy(this.gameObject);
+			
 		}
 	}
 

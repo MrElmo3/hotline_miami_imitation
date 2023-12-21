@@ -13,6 +13,7 @@ TagManager:
   - GraphNode
   - Graph
   - PlayerSound
+  - Walls
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - Walls
   - Bullet
   - Graph
-  - 
-  - 
+  - Enemies
+  - Enviroment
   - 
   - 
   - 

@@ -337,6 +337,7 @@ MonoBehaviour:
   initialState: {fileID: 3037904777852834352}
   playerSound: 0
   playerView: 0
+  hitSound: {fileID: 4875604750175432219, guid: b3839908c24e8da43a0d139d0989430e, type: 3}
 --- !u!114 &1352639692041013132
 MonoBehaviour:
   m_ObjectHideFlags: 0

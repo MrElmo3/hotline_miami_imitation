@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
 		set
 		{
 			enemiesInGame = value;
-			Debug.Log("Uno menos");
 			if (enemiesInGame == 0)
 			{
 				uIController.ActiveWinText();

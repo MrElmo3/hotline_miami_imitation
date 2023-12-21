@@ -12,7 +12,11 @@ public enum WeaponType{
 public class PlayerWeapon : MonoBehaviour{
 	[SerializeField] private Transform firePivot;
 	[SerializeField] private GameObject bulletPrefab;
-	[SerializeField] private GameObject soundPrefab;
+    [SerializeField] private GameObject pistolSoundPrefab;
+	[SerializeField] private GameObject shotgunSoundPrefab;
+	[SerializeField] private GameObject rifleSoundPrefab;
+	[SerializeField] private GameObject shotgunShot;
+	[SerializeField] private GameObject rifleShot;
 	[SerializeField] private float timeBetweenShots;
 	[SerializeField] private float automaticFireRate;
 	[SerializeField] private int dispersionAngle;
@@ -20,15 +24,12 @@ public class PlayerWeapon : MonoBehaviour{
 	[SerializeField] private WeaponType weaponType;
 	[SerializeField] private AmmoText ammoText;
 	[SerializeField] private GameManager gameManager;
-	//[SerializeField] private AudioSource shotgunShot;
-	//[SerializeField] private AudioSource rifleShot;
-	[SerializeField] private GameObject shotgunShot;
-	[SerializeField] private GameObject rifleShot;
+	
 
 	private bool isShooting;
 	private float nextTimeToShot;
 	private float angleIncrement;
-	private int ammo;
+	[SerializeField] private int ammo;
 
 	private AudioSource pistolShot;
 	
@@ -112,7 +113,7 @@ public class PlayerWeapon : MonoBehaviour{
 			if (isShooting && canShoot){
 				nextTimeToShot = Time.time + timeBetweenShots;
 				Instantiate(bulletPrefab, position, rotation);
-				Instantiate(soundPrefab, position, rotation);
+				Instantiate(pistolSoundPrefab, position, rotation);
 				animator.SetTrigger("Shoot");
 				pistolShot.Play();
 				Ammo--;
@@ -126,7 +127,6 @@ public class PlayerWeapon : MonoBehaviour{
 					sin = Mathf.Sin(angleRad * (i + 1));
 					cos = Mathf.Cos(angleRad * (i + 1));
 					rotateAngle = Quaternion.Euler(0, 0, angleIncrement * (i + 1));
-					Debug.Log(sin);
                     adjustmentX = firePivot.transform.right * (scale.x - cos * scale.x) * -1;
                     adjustmentY = firePivot.transform.up * sin * scale.x;
 
@@ -135,10 +135,11 @@ public class PlayerWeapon : MonoBehaviour{
 						rotation * rotateAngle );
 				}
 				animator.SetTrigger("Shoot");
-				sound = Instantiate(bulletPrefab, position, rotation);
+				Instantiate(bulletPrefab, position, rotation);
+				Instantiate(shotgunSoundPrefab, position, rotation);
+				sound = Instantiate(shotgunShot, position, Quaternion.identity);
 				Destroy(sound, 2f);
-				Instantiate(shotgunShot, position, Quaternion.identity);
-                for (int i = 0; i < numBullets / 2; i++)
+				for (int i = 0; i < numBullets / 2; i++)
                 {
                     sin = Mathf.Sin(angleRad * (i + 1));
                     cos = Mathf.Cos(angleRad * (i + 1));
@@ -161,6 +162,7 @@ public class PlayerWeapon : MonoBehaviour{
 				sound = Instantiate(rifleShot, position, Quaternion.identity);
 				Destroy(sound, 2f);
 				Instantiate(bulletPrefab, position, rotation);
+				Instantiate(rifleSoundPrefab, position, rotation);
 				Ammo--;
 			}
 		}
