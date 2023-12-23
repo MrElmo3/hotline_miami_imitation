@@ -9,10 +9,11 @@ public class AlertState : MonoBehaviour{
 	[SerializeField] private float _rotationSpeed = 270f;
 
 	[SerializeField] private GameObject bulletPrefab;
-	[SerializeField] private float _reactionTime = 0.55f;
+	[SerializeField] private float _reactionTime = 0.65f;
 	[SerializeField] private float timeBetweenShots = 0.5f;
 	private Transform firePivot;
 	private float lastTimeShot = 0;
+	private float lastTimeSee;
 	private AudioSource pistolShot;
 
 	private GraphScript graph;
@@ -55,6 +56,7 @@ public class AlertState : MonoBehaviour{
 		//Disparo
 		else if(stateMachine.playerView && stateMachine.GetPlayer().IsAlive()){
 			Debug.Log("Disparando");
+			if(lastTimeSee == 0) lastTimeSee = Time.time;
 			Shoot();
 		}
 		
@@ -73,6 +75,8 @@ public class AlertState : MonoBehaviour{
 			if((transform.position - path[index].transform.position).magnitude < 0.05f)
 				index--;
 		}
+
+		if(!stateMachine.playerView) lastTimeSee = 0;
 	}
 	
 	private void Move( Vector3 target){
@@ -90,7 +94,9 @@ public class AlertState : MonoBehaviour{
 		RotateTowards(stateMachine.GetPlayer().transform.position);
 		firePivot.transform.GetPositionAndRotation(out Vector3 position, out Quaternion rotation);
 		rotation = Quaternion.Euler(0, 0, rotation.eulerAngles.z + 90);
-		bool canShoot = Time.time >= lastTimeShot + timeBetweenShots + _reactionTime;
+		bool canShoot = 
+			Time.time >= lastTimeShot + timeBetweenShots && 
+			Time.time >= lastTimeSee + _reactionTime;
 
 		if (canShoot){
 			lastTimeShot = Time.time;

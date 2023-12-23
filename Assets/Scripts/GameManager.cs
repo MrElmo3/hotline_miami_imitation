@@ -8,46 +8,36 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private UIController uIController;
 
 	public static GameManager instance;
-	[SerializeField]
-	private int enemiesInGame;
-	private bool playerHasWeapon;
-	[SerializeField]
-	private bool playerIsDead;
+	[SerializeField] private int enemiesInGame;
+	[SerializeField] private bool playerIsDead;
 
-	public bool PlayerHasWeapon
-	{
+	private bool playerHasWeapon;
+
+	public bool PlayerHasWeapon{
 		get => playerHasWeapon;
-		set
-		{
+		set{
 			playerHasWeapon = value;
-			if(enemiesInGame != 0)
-			{
+			if(enemiesInGame != 0){
 				uIController.ActiveWeaponText();
 			}
 		}
 	}
 
-	public int EnemiesInGame
-	{
+	public int EnemiesInGame{
 		get => enemiesInGame;
-		set
-		{
+		set{
 			enemiesInGame = value;
-			if (enemiesInGame == 0)
-			{
+			if (enemiesInGame == 0){
 				uIController.ActiveWinText();
 			}
 		}
 	}
 
-	public bool PlayerIsDead
-	{
+	public bool PlayerIsDead{
 		get => playerIsDead;
-		set
-		{
+		set{
 			playerIsDead = value;
-			if (playerIsDead == true)
-			{
+			if (playerIsDead == true){
 				uIController.ActiveLoseText();
 			}
 		}
@@ -70,10 +60,8 @@ public class GameManager : MonoBehaviour
 		
 	}
 
-	public void EndLevel()
-	{
-		if (enemiesInGame == 0)
-		{
+	public void EndLevel(){
+		if (enemiesInGame == 0){
 			SceneManager.LoadScene(0);
 		}
 		
