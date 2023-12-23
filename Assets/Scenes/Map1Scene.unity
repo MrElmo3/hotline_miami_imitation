@@ -36833,7 +36833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3024157426310793226, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: weaponType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3024157426310793226, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: gameManager

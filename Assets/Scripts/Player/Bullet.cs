@@ -6,7 +6,6 @@ public class Bullet : MonoBehaviour{
 
 	[SerializeField] float bulletSpeed;
 	[SerializeField] private float timeToDestroy;
-	[SerializeField] private GameObject handgun;
 	private Rigidbody2D rb;
 
 	void Start(){
@@ -32,14 +31,12 @@ public class Bullet : MonoBehaviour{
 		if(collision.CompareTag("Enemy")){
 			StopCoroutine("DestroyBullet");
 			Destroy(collision.gameObject);
-			Instantiate(handgun, collision.transform.position, Quaternion.identity);
 			Destroy(this.gameObject);
 		}
 		else if(collision.transform.CompareTag("Enviroment"))
 		{
 			StopCoroutine("DestroyBullet");
 			Destroy(this.gameObject);
-			
 		}
 	}
 

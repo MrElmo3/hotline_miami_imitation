@@ -13,7 +13,6 @@ TagManager:
   - GraphNode
   - Graph
   - PlayerSound
-  - Walls
   layers:
   - Default
   - TransparentFX

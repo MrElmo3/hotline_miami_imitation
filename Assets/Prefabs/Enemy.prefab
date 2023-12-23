@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 1352639692041013132}
   - component: {fileID: 3037904777852834352}
   - component: {fileID: -6517970450283000553}
+  - component: {fileID: 1900120464739351141}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -337,7 +338,6 @@ MonoBehaviour:
   initialState: {fileID: 3037904777852834352}
   playerSound: 0
   playerView: 0
-  hitSound: {fileID: 4875604750175432219, guid: b3839908c24e8da43a0d139d0989430e, type: 3}
 --- !u!114 &1352639692041013132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +385,21 @@ MonoBehaviour:
   _reactionTime: 0.25
   timeBetweenShots: 0.5
   path: []
+--- !u!114 &1900120464739351141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967623484822695798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71dd5fb40a3f194582974df8dea2761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSound: {fileID: 4875604750175432219, guid: b3839908c24e8da43a0d139d0989430e, type: 3}
+  handgun: {fileID: 7018471865904403303, guid: 553f7069eb933fd4ead74b64b46efcea, type: 3}
+  player: {fileID: 0}
 --- !u!1 &8516936187084621966
 GameObject:
   m_ObjectHideFlags: 0

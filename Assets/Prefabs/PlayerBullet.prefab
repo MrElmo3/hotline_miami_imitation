@@ -111,7 +111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 120
   timeToDestroy: 2
-  handgun: {fileID: 7018471865904403303, guid: 553f7069eb933fd4ead74b64b46efcea, type: 3}
 --- !u!1 &5851982678272928354
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +181,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1917568429
+  m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
