@@ -5,7 +5,7 @@ public class PlayerScript : MonoBehaviour{
 
 	[SerializeField] private float acelerationTime;
 	[SerializeField] private float speed;
-
+	[SerializeField] private Transform firePivot;
 	[SerializeField] private bool isDead;
 
 	private Vector2 currentVelocity;
@@ -47,7 +47,7 @@ public class PlayerScript : MonoBehaviour{
 		if(!IsAlive())
 			return;
 		Vector2 mousePosition = Input.mousePosition;
-		Vector2 distance = Camera.main.ScreenToWorldPoint(mousePosition) - transform.position;
+		Vector2 distance = Camera.main.ScreenToWorldPoint(mousePosition) - firePivot.transform.position;
 
 		float angle = Mathf.Atan2(distance.y, distance.x) * Mathf.Rad2Deg;
 
