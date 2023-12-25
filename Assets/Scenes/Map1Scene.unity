@@ -36959,7 +36959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1468639806109009498, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 1468639806109009498, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37045,6 +37045,10 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5141449305800698508, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5980943976037686864, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: pickUp
       value: 
@@ -37053,9 +37057,17 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1178697335}
+    - target: {fileID: 6108950956004423798, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
+      propertyPath: firePivot
+      value: 
+      objectReference: {fileID: 1755403040}
     - target: {fileID: 7284262760586879382, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321478720488209390, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.57
       objectReference: {fileID: 0}
     - target: {fileID: 7321478720488209390, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: m_LocalRotation.w
@@ -40876,6 +40888,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 90}
   m_EdgeRadius: 0
+--- !u!4 &1755403040 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7321478720488209390, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
+  m_PrefabInstance: {fileID: 830631370}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1776992427
 GameObject:
   m_ObjectHideFlags: 0
