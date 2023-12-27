@@ -15,6 +15,7 @@ public class IdleState : MonoBehaviour
 	}
 
 	void Update(){
+		stateMachine.getAnimator().SetBool("isWalking", false);
 		if(transform.rotation.eulerAngles != rotation)
 			RotateTowards(rotation);
 		if ((stateMachine.playerView || stateMachine.playerSound) && stateMachine.GetPlayer().IsAlive()){

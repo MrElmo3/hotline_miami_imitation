@@ -55,6 +55,7 @@ public class AlertState : MonoBehaviour{
 
 		//Disparo
 		else if(stateMachine.playerView && stateMachine.GetPlayer().IsAlive()){
+			stateMachine.getAnimator().SetBool("isWalking", false);
 			Debug.Log("Disparando");
 			if(lastTimeSee == 0) lastTimeSee = Time.time;
 			Shoot();
@@ -80,6 +81,7 @@ public class AlertState : MonoBehaviour{
 	}
 	
 	private void Move( Vector3 target){
+		stateMachine.getAnimator().SetBool("isWalking", true);
 		transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
 	}
 
@@ -99,6 +101,8 @@ public class AlertState : MonoBehaviour{
 			Time.time >= lastTimeSee + _reactionTime;
 
 		if (canShoot){
+			Debug.Log("Set");
+			stateMachine.getAnimator().SetTrigger("shoot");
 			lastTimeShot = Time.time;
 			Instantiate(bulletPrefab, position, rotation);
 			pistolShot.Play();

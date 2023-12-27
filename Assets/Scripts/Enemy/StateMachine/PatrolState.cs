@@ -29,6 +29,7 @@ public class PatrolState : MonoBehaviour
 	}
 
 	private void Move(){
+		stateMachine.getAnimator().SetBool("isWalking", true);
 		transform.position = Vector2.MoveTowards(
 			transform.position, 
 			waypoints[waypointIndex].position, 
