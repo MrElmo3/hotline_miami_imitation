@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PatrolState : MonoBehaviour
 {
-	[SerializeField] Transform[] Waypoints;
+	[SerializeField] List<Transform> waypoints;
 	[SerializeField] private float speed = 8.0f;
 	[SerializeField] private float _rotationSpeed = 180;
 
@@ -19,7 +19,7 @@ public class PatrolState : MonoBehaviour
 
 
 	private void Update(){
-		if(Waypoints.Length > 0){
+		if(waypoints.Count > 0){
 			Move();
 			RotateTowardsTarget();
 		}
@@ -29,22 +29,27 @@ public class PatrolState : MonoBehaviour
 	}
 
 	private void Move(){
-		transform.position = Vector2.MoveTowards(transform.position, Waypoints[waypointIndex].position, speed * Time.deltaTime);
-		if (this.transform.position == Waypoints[waypointIndex].position)
-		{
-			waypointIndex = (waypointIndex + 1) % Waypoints.Length;
+		transform.position = Vector2.MoveTowards(
+			transform.position, 
+			waypoints[waypointIndex].position, 
+			speed * Time.deltaTime);
+
+		if (this.transform.position == waypoints[waypointIndex].position){
+			waypointIndex = (waypointIndex + 1) % waypoints.Count;
 		}
 	}
 
 	private void RotateTowardsTarget(){
 		Quaternion targetRotation = Quaternion.LookRotation(transform.forward, GetDirection());
-		Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
+		Quaternion rotation = Quaternion.RotateTowards(
+			transform.rotation, targetRotation, 
+			_rotationSpeed * Time.deltaTime);
 
 		transform.rotation = rotation;
 	}
 
 	private Vector2 GetDirection(){
-		Vector2 distance = Waypoints[waypointIndex].position - transform.position;
+		Vector2 distance = waypoints[waypointIndex].position - transform.position;
 		return distance.normalized;
 	}
 }
