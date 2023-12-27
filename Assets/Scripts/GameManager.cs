@@ -51,20 +51,26 @@ public class GameManager : MonoBehaviour
 
 	private void Update(){
 		ResetGame();
+		EndGame();
 	}
 
 	private void ResetGame(){
 		if (playerIsDead && Input.GetKeyDown(KeyCode.R)){
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
-		
 	}
 
+	private void EndGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+			SceneManager.LoadScene(0);
+		}
+    }
 	public void EndLevel(){
 		if (enemiesInGame == 0){
 			SceneManager.LoadScene(0);
 		}
-		
 	}
 
 }

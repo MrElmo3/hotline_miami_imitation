@@ -36959,7 +36959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1468639806109009498, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.57
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1468639806109009498, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37047,7 +37047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5141449305800698508, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5980943976037686864, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: pickUp
@@ -37061,6 +37061,10 @@ PrefabInstance:
       propertyPath: firePivot
       value: 
       objectReference: {fileID: 1755403040}
+    - target: {fileID: 6108950956004423798, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
+      propertyPath: rotateSpeed
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 7284262760586879382, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -37092,6 +37096,10 @@ PrefabInstance:
     - target: {fileID: 9011119302273653202, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9011119302273653202, guid: 970e6c1bcfb3c7f60949699974980094, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39580,7 +39588,7 @@ GameObject:
   - component: {fileID: 1538722943}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Enviroment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

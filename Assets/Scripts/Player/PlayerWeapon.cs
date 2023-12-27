@@ -62,15 +62,18 @@ public class PlayerWeapon : MonoBehaviour{
 				
 				ammo = 24;
 				ammoText.SetText(ammo, ammo);
+				animator.Play("player_rifle_idle");
 			}               
 			else if (value == WeaponType.Shotgun){
 				ammo = 6;
 				ammoText.SetText(ammo, ammo);
+				animator.Play("player_shotgun_idle");
 			}
 			   
 			else if (value == WeaponType.Handgun){
 				ammo = 8; //just for testing propouses
 				ammoText.SetText(ammo, ammo);
+				animator.Play("player_handgun_idle");
 			}
 		}
 	}

@@ -5,9 +5,10 @@ public class PlayerScript : MonoBehaviour{
 
 	[SerializeField] private float acelerationTime;
 	[SerializeField] private float speed;
+	[SerializeField] private float rotateSpeed;
 	[SerializeField] private Transform firePivot;
 	[SerializeField] private bool isDead;
-
+	
 	private Vector2 currentVelocity;
 	private Vector2 movementVector;
 	private Vector2 inputVector;
@@ -50,8 +51,8 @@ public class PlayerScript : MonoBehaviour{
 		Vector2 distance = Camera.main.ScreenToWorldPoint(mousePosition) - firePivot.transform.position;
 
 		float angle = Mathf.Atan2(distance.y, distance.x) * Mathf.Rad2Deg;
-
-		transform.rotation = Quaternion.Euler(0, 0, angle);
+		if(distance.magnitude > 1.5f)
+			transform.rotation = Quaternion.Lerp(transform.rotation,Quaternion.Euler(0, 0, angle),rotateSpeed*Time.deltaTime);
 	}
 	
 	private void  GetInput(){

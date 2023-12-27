@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 3037904777852834352}
   - component: {fileID: -6517970450283000553}
   - component: {fileID: 1900120464739351141}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -399,7 +399,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSound: {fileID: 4875604750175432219, guid: b3839908c24e8da43a0d139d0989430e, type: 3}
   handgun: {fileID: 7018471865904403303, guid: 553f7069eb933fd4ead74b64b46efcea, type: 3}
-  player: {fileID: 0}
 --- !u!1 &8516936187084621966
 GameObject:
   m_ObjectHideFlags: 0
