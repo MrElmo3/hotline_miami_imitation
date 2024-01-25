@@ -1,21 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Weapons;
 
-public class AnimationController : MonoBehaviour{
+namespace Player{
 
-    private Animator animator;
+	public class AnimationController : MonoBehaviour{
 
-    [SerializeField] private WeaponsEnum weapon = WeaponsEnum.UNARMED;
-    [SerializeField] private bool isMoving = false;
+		[SerializeField] private bool isMoving = false;
 
-    void Start(){
-        animator = GetComponent<Animator>();
-    }
+		private PlayerDataSO playerData;
+		private int WeaponMax = 3;
+		private Animator animator;
 
+		void Start(){
+			animator = GetComponent<Animator>();
+			playerData = GetComponent<PlayerController>().playerData;
+		}
 
-    void Update(){
-        animator.SetFloat("WeaponType", (float)weapon/2);
-        animator.SetBool("isMoving", isMoving);
-    }
+		void Update(){
+			animator.SetFloat("WeaponType", (float)playerData.CurrentWeapon.WeaponType/WeaponMax);
+			animator.SetBool("isMoving", isMoving);
+		}
+
+		public void SetIsMoving(bool isMoving){
+			this.isMoving = isMoving;
+		}
+	}
 }

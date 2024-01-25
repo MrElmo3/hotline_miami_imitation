@@ -1,14 +1,15 @@
 using System;
+using Player;
 using UnityEngine;
 
 public class PickUpWeapons : MonoBehaviour
 {
-	[SerializeField] private PlayerWeapon pWeapon;
+	/* [SerializeField] private PlayerWeapon pWeapon;
 	[SerializeField] private AudioSource pickUp;
-	[SerializeField] private PlayerScript player;
+	[SerializeField] private PlayerController player;
 
 	private void OnTriggerStay2D(Collider2D collision){
-		if (!player.IsAlive()) return;
+		if (!player.GetIsAlive()) return;
 		if (PickUp(collision, "Handgun"))
         {
 			pickUp.Play();
@@ -32,5 +33,5 @@ public class PickUpWeapons : MonoBehaviour
     private bool PickUp(Collider2D collision, String tag)
     {
 		return collision.transform.CompareTag(tag) && Input.GetKey(KeyCode.E);
-	}
+	} */
 }
