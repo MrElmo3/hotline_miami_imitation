@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8751573774045754756}
   - component: {fileID: 8959626617372430723}
   - component: {fileID: 2595253954567369354}
-  - component: {fileID: -5431431700080497965}
   m_Layer: 7
   m_Name: EnemyBullet
   m_TagString: Bullet
@@ -97,21 +96,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 1
---- !u!114 &-5431431700080497965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3897308148649945763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5542281270b04fd4e87b429a757b84d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 120
-  timeToDestroy: 2
-  hitSound: {fileID: 4875604750175432219, guid: b3839908c24e8da43a0d139d0989430e, type: 3}
 --- !u!1 &5851982678272928354
 GameObject:
   m_ObjectHideFlags: 0

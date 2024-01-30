@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724475846bbc76a44916eff9559eb25f, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  <IsAlive>k__BackingField: 0
-  <Speed>k__BackingField: 0
-  <RotateSpeed>k__BackingField: 0
-  <CurrentWeapon>k__BackingField: 0
+  <IsAlive>k__BackingField: 1
+  <CurrentWeapon>k__BackingField: {fileID: 11400000, guid: a40608328afec6442bcc833407a6e2fc, type: 2}
+  <Speed>k__BackingField: 30
+  <RotateSpeed>k__BackingField: 30
   <Ammo>k__BackingField: 0

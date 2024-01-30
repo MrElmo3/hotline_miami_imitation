@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cabdcd20d98815a4ab765f706e73b272, type: 3}
   m_Name: Silencer
   m_EditorClassIdentifier: 
-  <Ammo>k__BackingField: 12
   <Sprite>k__BackingField: {fileID: 21300000, guid: 029dc2a970470914e8fbc3aa419dde8f, type: 3}
   <BasicWeaponType>k__BackingField: 1
   <WeaponType>k__BackingField: 2
+  <Ammo>k__BackingField: 12
+  <BulletsPerShot>k__BackingField: 1
+  <Dispersion>k__BackingField: 0
+  <AttackSpeed>k__BackingField: 2.5

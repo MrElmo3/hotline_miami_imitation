@@ -10,7 +10,7 @@ namespace Player{
 		[SerializeField] private bool isMoving = false;
 
 		private PlayerDataSO playerData;
-		private int WeaponMax = 3;
+		private int WeaponMax = System.Enum.GetValues(typeof(WeaponsEnum)).Length - 1;
 		private Animator animator;
 
 		void Start(){

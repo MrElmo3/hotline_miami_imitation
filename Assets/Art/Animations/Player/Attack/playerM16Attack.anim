@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: playerUnarmedAttack
+  m_Name: playerM16Attack
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,21 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 70db3fa11e61bd54b81727c917a80b3f, type: 3}
+      value: {fileID: 21300000, guid: e6b3aa0d476802e418967b01547a4cac, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: c31b16b3dd5a95448a4712ef95df9e4e, type: 3}
+      value: {fileID: 21300000, guid: 808645a3ef8af1e4e821ed62494a87cd, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: ba525be48b873c047ac1e009c7a4783e, type: 3}
-    - time: 0.25
-      value: {fileID: 21300000, guid: bba520ae618ba1a4999afccae2e5f5c9, type: 3}
-    - time: 0.33333334
-      value: {fileID: 21300000, guid: f64b958aee3a14a44a2a105c18ee9613, type: 3}
-    - time: 0.41666666
-      value: {fileID: 21300000, guid: d4b5810d90ef86a42bd7e26cd63843a6, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: 8cb894ae6d9abd34c8f55a66cd895b99, type: 3}
-    - time: 0.56666666
-      value: {fileID: 21300000, guid: 70db3fa11e61bd54b81727c917a80b3f, type: 3}
+      value: {fileID: 21300000, guid: e6b3aa0d476802e418967b01547a4cac, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -58,20 +48,15 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 70db3fa11e61bd54b81727c917a80b3f, type: 3}
-    - {fileID: 21300000, guid: c31b16b3dd5a95448a4712ef95df9e4e, type: 3}
-    - {fileID: 21300000, guid: ba525be48b873c047ac1e009c7a4783e, type: 3}
-    - {fileID: 21300000, guid: bba520ae618ba1a4999afccae2e5f5c9, type: 3}
-    - {fileID: 21300000, guid: f64b958aee3a14a44a2a105c18ee9613, type: 3}
-    - {fileID: 21300000, guid: d4b5810d90ef86a42bd7e26cd63843a6, type: 3}
-    - {fileID: 21300000, guid: 8cb894ae6d9abd34c8f55a66cd895b99, type: 3}
-    - {fileID: 21300000, guid: 70db3fa11e61bd54b81727c917a80b3f, type: 3}
+    - {fileID: 21300000, guid: e6b3aa0d476802e418967b01547a4cac, type: 3}
+    - {fileID: 21300000, guid: 808645a3ef8af1e4e821ed62494a87cd, type: 3}
+    - {fileID: 21300000, guid: e6b3aa0d476802e418967b01547a4cac, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5833333
+    m_StopTime: 0.18333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -90,11 +75,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0.5
-    functionName: DisableMelleHitbox
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []
