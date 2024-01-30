@@ -1,37 +1,24 @@
 using System;
 using Player;
 using UnityEngine;
+using Weapons;
 
-public class PickUpWeapons : MonoBehaviour
-{
-	/* [SerializeField] private PlayerWeapon pWeapon;
-	[SerializeField] private AudioSource pickUp;
-	[SerializeField] private PlayerController player;
+public class PickUpWeapons : MonoBehaviour{
 
-	private void OnTriggerStay2D(Collider2D collision){
-		if (!player.GetIsAlive()) return;
-		if (PickUp(collision, "Handgun"))
-        {
-			pickUp.Play();
-			Destroy(collision.gameObject);
-			pWeapon.WeaponType = WeaponType.Handgun;
-		}
-		else if (PickUp(collision, "Shotgun"))
-        {
-			pickUp.Play();
-			Destroy(collision.gameObject);
-			pWeapon.WeaponType = WeaponType.Shotgun;
-		}
-		else if (PickUp(collision, "Automatic"))
-        {
-			pickUp.Play();
-			Destroy(collision.gameObject);
-			pWeapon.WeaponType = WeaponType.Automatic;
-		}
+	[SerializeField] private AudioClip pickUp;
+
+	private PlayerDataSO playerData;
+
+	private void Start() {
+		playerData = GetComponent<PlayerController>().playerData;
 	}
 
-    private bool PickUp(Collider2D collision, String tag)
-    {
-		return collision.transform.CompareTag(tag) && Input.GetKey(KeyCode.E);
-	} */
+	private void OnTriggerStay2D(Collider2D collision){
+		if (!playerData.IsAlive) return;
+		if (collision.tag == "Weapon" && Input.GetKey(KeyCode.E)){
+			//pickUp.Play();
+			//Destroy(collision.gameObject);
+			playerData.CurrentWeapon = collision.GetComponent<WeaponScript>().WeaponData;
+		}
+	}
 }

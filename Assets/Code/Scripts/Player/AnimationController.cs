@@ -7,7 +7,7 @@ namespace Player{
 
 	public class AnimationController : MonoBehaviour{
 
-		[SerializeField] private bool isMoving = false;
+		private bool isMoving = false;
 
 		private PlayerDataSO playerData;
 		private int WeaponMax = System.Enum.GetValues(typeof(WeaponsEnum)).Length - 1;
