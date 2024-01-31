@@ -5,23 +5,18 @@ using UnityEngine;
 public class Bullet : MonoBehaviour{
 
 	[SerializeField] float bulletSpeed;
-	[SerializeField] private float timeToDestroy;
+	[SerializeField] private float timeToDisable;
 	private Rigidbody2D rb;
 
-	void Start(){
+	private void OnEnable() {
 		rb = GetComponent<Rigidbody2D>();
-		StartCoroutine("DestroyBullet");
 		rb.velocity = transform.right * bulletSpeed;
+		StartCoroutine("DisableBullet");
 	}
 	
 	void Update(){
 		// CheckColission();
     }
-
-	public void SetDirection(Vector2 direction){
-		transform.right = direction;
-	}
-
 	// private void CheckColission(){
 	// 	RaycastHit2D hitf = Physics2D.Raycast(transform.position, transform.right*-1, 1.5f, LayerMask.GetMask("Walls"));
 
@@ -44,8 +39,9 @@ public class Bullet : MonoBehaviour{
 	// 	}
 	// }
 
-	IEnumerator DestroyBullet(){
-		yield return new WaitForSeconds(timeToDestroy);
-		Destroy(this.gameObject);
+	IEnumerator DisableBullet(){
+		yield return new WaitForSeconds(timeToDisable);
+		BulletSpawner.Instance.AddBullet(this.gameObject);
 	}
+
 }

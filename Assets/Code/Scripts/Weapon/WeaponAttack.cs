@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using Weapons;
 
@@ -14,16 +13,9 @@ public class WeaponAttack{
 
 			case BasicWeaponType.RANGED:
 
-				GameObject bullet = GameObject.Find("BaseBullet");
+				Vector3 firePosition = entity.transform.Find("FirePivot").transform.position;
 
-				if(weaponData.BulletsPerShot == 1){
-					_ = GameObject.Instantiate(
-						bullet,
-						entity.transform.Find("FirePivot").transform.position,
-						entity.transform.rotation
-					).GetComponent<Bullet>().enabled = true;
-				}
-				else{
+				if(weaponData.BulletsPerShot > 1){
 					float step = weaponData.Dispersion / (weaponData.BulletsPerShot-1);
 					for(int i = 0; i < weaponData.BulletsPerShot; i++){
 						//rotation calculus
@@ -33,13 +25,11 @@ public class WeaponAttack{
 							entity.transform.rotation.eulerAngles.z - weaponData.Dispersion/2 + step * i
 						);
 						//bullet instantiation
-						_ = GameObject.Instantiate(
-							bullet,
-							entity.transform.Find("FirePivot").transform.position,
-							bulletRotation
-						).GetComponent<Bullet>().enabled = true;
+						BulletSpawner.Instance.SpawnBullet(firePosition, bulletRotation);
 					}
+					break;
 				}
+				BulletSpawner.Instance.SpawnBullet(firePosition, entity.transform.rotation);
 				break;
 		}
 	}
