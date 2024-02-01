@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,20 @@ namespace Weapons{
 
 		public void SetWeaponData(WeaponDataSO weaponData){
 			WeaponData = weaponData;
+		}
+
+		public void StartMoving(){
+			GetComponent<Collider2D>().isTrigger = false;
+			GetComponent<Rigidbody2D>().velocity = transform.right * velocity;
+			GetComponent<Rigidbody2D>().angularVelocity = rotationSpeed;
+			StartCoroutine(TimeMoving());
+		}
+
+		private IEnumerator TimeMoving(){
+			yield return new WaitForSeconds(timeMoving);
+			GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+			GetComponent<Rigidbody2D>().angularVelocity = 0;
+			GetComponent<Collider2D>().isTrigger = true;
 		}
 	}
 }

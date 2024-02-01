@@ -21,17 +21,16 @@ namespace Player{
 		}
 
 		private void Update() {
-			if(playerData.IsAlive){
-				GetInput();
-				Aim();
-				TryAttack();
-			}
+			if(!playerData.IsAlive) return;
+			GetInput();
+			Aim();
+			TryAttack();
+			LeftButtonAction();
 		}
 
 		private void FixedUpdate() {
-			if(playerData.IsAlive){
-				Move();
-			}
+			if(!playerData.IsAlive) return;
+			Move();
 		}
 
 		private void GetInput(){
@@ -41,8 +40,6 @@ namespace Player{
 		}
 
 		private void Move(){
-			if(!playerData.IsAlive)
-				return;
 			rb.velocity = input.normalized * playerData.Speed;
 			anim.SetIsMoving(input.magnitude != 0);
 		}
@@ -72,6 +69,16 @@ namespace Player{
 				StartCoroutine(AttackCooldown(1/playerData.CurrentWeapon.AttackSpeed));
 			}   
 		}
+
+		private void LeftButtonAction(){
+			if(Input.GetMouseButtonDown(1)){
+				//trow weapon
+				GetComponent<ThrowWeapons>().Throw();
+
+				//pickup weapon
+				GetComponent<PickUpWeapons>().PickUp();
+			}
+		}	
 
 		public void DisableMelleHitbox(){
 			transform.Find("MeleeHitbox").gameObject.SetActive(false);

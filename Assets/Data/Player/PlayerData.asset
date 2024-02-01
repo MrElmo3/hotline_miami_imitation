@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsAlive>k__BackingField: 1
   <CurrentWeapon>k__BackingField: {fileID: 11400000, guid: a40608328afec6442bcc833407a6e2fc, type: 2}
-  <Speed>k__BackingField: 30
-  <RotateSpeed>k__BackingField: 30
+  <Speed>k__BackingField: 25
+  <RotateSpeed>k__BackingField: 25
   <Ammo>k__BackingField: 0
+  <DefaultWeapon>k__BackingField: {fileID: 11400000, guid: dd6c81838e825c2429ff51a5464cfccc, type: 2}

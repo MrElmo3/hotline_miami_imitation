@@ -5,14 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
-  - Handgun
-  - Shotgun
-  - Automatic
   - Enemy
   - Enviroment
   - GraphNode
   - Graph
   - PlayerSound
+  - Weapon
   layers:
   - Default
   - TransparentFX

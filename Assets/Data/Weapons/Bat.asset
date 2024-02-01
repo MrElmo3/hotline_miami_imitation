@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cabdcd20d98815a4ab765f706e73b272, type: 3}
   m_Name: Bat
   m_EditorClassIdentifier: 
-  <Ammo>k__BackingField: 0
   <Sprite>k__BackingField: {fileID: 21300000, guid: ec5c5bf6db7bfcd4b81c6b8ec10866ee, type: 3}
   <BasicWeaponType>k__BackingField: 0
   <WeaponType>k__BackingField: 1
+  <Ammo>k__BackingField: 0
+  <BulletsPerShot>k__BackingField: 0
+  <Dispersion>k__BackingField: 0
+  <AttackSpeed>k__BackingField: 3

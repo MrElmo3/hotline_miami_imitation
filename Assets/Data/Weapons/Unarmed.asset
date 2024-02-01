@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cabdcd20d98815a4ab765f706e73b272, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
-  ammo: 0
+  <Sprite>k__BackingField: {fileID: 0}
+  <BasicWeaponType>k__BackingField: 0
+  <WeaponType>k__BackingField: 0
+  <Ammo>k__BackingField: 0
+  <BulletsPerShot>k__BackingField: 0
+  <Dispersion>k__BackingField: 0
+  <AttackSpeed>k__BackingField: 3
