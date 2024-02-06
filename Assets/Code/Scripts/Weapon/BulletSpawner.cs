@@ -22,7 +22,7 @@ public class BulletSpawner : MonoBehaviour {
 			bullet.SetActive(true);
 			return;
 		}
-		GameObject newBullet = Instantiate(bulletPrefab, position, rotation);
+		GameObject newBullet = Instantiate(bulletPrefab, position, rotation, this.transform);
 	}
 
 	public void AddBullet(GameObject bullet){

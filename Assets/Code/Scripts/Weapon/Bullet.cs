@@ -40,7 +40,9 @@ public class Bullet : MonoBehaviour{
 	// }
 
 	private void OnCollisionEnter2D(Collision2D other) {
-		if(other.transform.CompareTag("Enviroment")){
+		if(other.transform.CompareTag("Enviroment") ||
+			other.transform.CompareTag("Enemy") ||
+			other.transform.CompareTag("")){
 			StopCoroutine("DisableBullet");
 			BulletSpawner.Instance.AddBullet(this.gameObject);
 		}

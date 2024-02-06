@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 1567458465404483944}
   m_Layer: 0
   m_Name: L1
-  m_TagString: Untagged
+  m_TagString: Enviroment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,8 +138,8 @@ Transform:
   m_GameObject: {fileID: 3546487061862145834}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.48, y: -0.8130295, z: 0}
-  m_LocalScale: {x: 212.55742, y: 224.01746, z: 4.3046}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1934982694165868678}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 8011024024768171604}
   m_Layer: 0
   m_Name: L3
-  m_TagString: Untagged
+  m_TagString: Enviroment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 909907637519667885}
   m_Layer: 0
   m_Name: L4
-  m_TagString: Untagged
+  m_TagString: Enviroment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 7131914866832248241}
   m_Layer: 0
   m_Name: L2
-  m_TagString: Untagged
+  m_TagString: Enviroment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
