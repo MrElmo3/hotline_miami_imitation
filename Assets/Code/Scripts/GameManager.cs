@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
 	private void Update(){
 		ResetGame();
-		EndGame();
+		TryPause();
 	}
 
 	private void ResetGame(){
@@ -60,11 +60,11 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	private void EndGame()
+	private void TryPause()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-			SceneManager.LoadScene(0);
+			PauseController.TogglePause();
 		}
     }
 	public void EndLevel(){
