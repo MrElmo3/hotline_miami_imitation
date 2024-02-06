@@ -64,6 +64,14 @@ namespace Player{
 		}
 
 		private void TryAttack(){
+			RaycastHit2D hitf = Physics2D.Raycast(
+				transform.position, 
+				transform.right, 
+				Vector3.Distance(transform.position, firePivot.position), 
+				LayerMask.GetMask("Walls")
+			);
+			if(hitf.collider != null) return;
+
 			if(Input.GetMouseButton(0) && canAttack){
 				WeaponAttack.Attack(gameObject, playerData.CurrentWeapon);
 				StartCoroutine(AttackCooldown(1/playerData.CurrentWeapon.AttackSpeed));

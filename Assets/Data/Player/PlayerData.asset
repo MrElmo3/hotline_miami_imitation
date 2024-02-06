@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   <IsAlive>k__BackingField: 1
-  <CurrentWeapon>k__BackingField: {fileID: 11400000, guid: a40608328afec6442bcc833407a6e2fc, type: 2}
+  <CurrentWeapon>k__BackingField: {fileID: 11400000, guid: 4a79f64e4b3cf1a49b0dfd8243df5531, type: 2}
   <Speed>k__BackingField: 25
   <RotateSpeed>k__BackingField: 25
   <Ammo>k__BackingField: 0

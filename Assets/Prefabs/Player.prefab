@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 9011119302273653202}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.35, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1.35, y: 1.35, z: 1.35}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 7764979155657724401, guid: 6dfcb69ec44ce404fad8665f9aabc015, type: 3}
+  offsetMagnitude: 3
 --- !u!1 &9149216551847265444
 GameObject:
   m_ObjectHideFlags: 0

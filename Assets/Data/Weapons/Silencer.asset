@@ -18,4 +18,4 @@ MonoBehaviour:
   <Ammo>k__BackingField: 12
   <BulletsPerShot>k__BackingField: 1
   <Dispersion>k__BackingField: 0
-  <AttackSpeed>k__BackingField: 2.5
+  <AttackSpeed>k__BackingField: 3
