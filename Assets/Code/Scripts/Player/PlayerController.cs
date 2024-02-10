@@ -6,6 +6,7 @@ namespace Player{
 	public class PlayerController : MonoBehaviour {
 		
 		[SerializeField] public PlayerDataSO playerData;
+
 		[SerializeField] private Transform firePivot;
 
 		private Vector2 input;
@@ -18,6 +19,7 @@ namespace Player{
 			playerData.IsAlive = true;
 			rb = GetComponent<Rigidbody2D>();
 			anim = GetComponent<AnimationController>();
+			playerData.CurrentWeapon = playerData.DefaultWeapon;
 		}
 
 		private void Update() {

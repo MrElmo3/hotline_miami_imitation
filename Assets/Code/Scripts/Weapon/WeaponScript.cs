@@ -7,10 +7,11 @@ namespace Weapons{
 	public class WeaponScript : MonoBehaviour{
 		
 		[field: SerializeField] public WeaponDataSO WeaponData {get; private set;}
-
 		[SerializeField] private float rotationSpeed;
 		[SerializeField] private float velocity;
 		[SerializeField] private float timeMoving;
+
+		public int actualAmmo {get; set;} = -1;
 
 		private void Update() {
 			GetComponent<SpriteRenderer>().sprite = WeaponData.Sprite;

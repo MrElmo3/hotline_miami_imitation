@@ -26,6 +26,9 @@ public class PickUpWeapons : MonoBehaviour{
 
 	public void PickUp(){
 		if(weapon != null){
+			playerData.Ammo = weapon.GetComponent<WeaponScript>().actualAmmo;
+			if(playerData.Ammo == -1)
+				playerData.Ammo = weapon.GetComponent<WeaponScript>().WeaponData.Ammo;
 			WeaponDataSO weaponData = weapon.GetComponent<WeaponScript>().WeaponData;
 			playerData.CurrentWeapon = weaponData;
 			//AudioManager.Instance.Play(pickUp);

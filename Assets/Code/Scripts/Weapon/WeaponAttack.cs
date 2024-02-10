@@ -1,18 +1,22 @@
+using Player;
 using UnityEngine;
 using Weapons;
 
 public class WeaponAttack{
 	public static void Attack(GameObject entity, WeaponDataSO weaponData){
-		entity.GetComponent<Animator>().SetTrigger("Attack");
 
 		switch (weaponData.BasicWeaponType){
 
 			case BasicWeaponType.MELEE:
+				entity.GetComponent<Animator>().SetTrigger("Attack");
 				entity.transform.Find("MeleeHitbox").gameObject.SetActive(true);
 				break;
 
 			case BasicWeaponType.RANGED:
+				if (entity.GetComponent<PlayerController>().playerData.Ammo <=0) return;
 
+				entity.GetComponent<Animator>().SetTrigger("Attack");
+				entity.GetComponent<PlayerController>().playerData.Ammo--;
 				Vector3 firePosition = entity.transform.Find("FirePivot").transform.position;
 
 				if(weaponData.BulletsPerShot > 1){

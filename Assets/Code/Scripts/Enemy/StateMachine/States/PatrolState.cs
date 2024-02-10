@@ -1,7 +1,26 @@
 // using System.Collections;
 // using System.Collections.Generic;
-// using UnityEngine;
+using UnityEngine;
 
+namespace Enemy
+{
+
+public class PatrolState : EnemyBaseState {
+
+	public PatrolState(){
+		name = EnemyState.Patrol;
+	}
+
+	public override void EnterState(EnemyStateMannager enemy){
+		Debug.Log("PatrolState");
+	}
+
+	public override void UpdateState(EnemyStateMannager enemy){
+
+	}
+}
+
+}
 // public class PatrolState : MonoBehaviour
 // {
 // 	[SerializeField] List<Transform> waypoints;

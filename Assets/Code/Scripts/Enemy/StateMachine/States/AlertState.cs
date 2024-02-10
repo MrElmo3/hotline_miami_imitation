@@ -1,7 +1,23 @@
-// using System.Collections.Generic;
-// using System.ComponentModel;
-// using Unity.VisualScripting;
-// using UnityEngine;
+using UnityEngine;
+
+namespace Enemy
+{
+
+public class AlertState : EnemyBaseState{
+
+    public AlertState(){
+        name = EnemyState.Alert;
+    }
+	
+    public override void EnterState(EnemyStateMannager enemy){
+        Debug.Log("AlertState");
+    }
+
+    public override void UpdateState(EnemyStateMannager enemy){
+    }
+}
+
+}
 
 // public class AlertState : MonoBehaviour{
 

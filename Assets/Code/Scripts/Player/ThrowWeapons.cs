@@ -22,7 +22,8 @@ public class ThrowWeapons : MonoBehaviour {
 
 			GameObject throwedWeapon = Instantiate(weaponPrefab, position, transform.rotation, WeaponContainer.transform);
 			throwedWeapon.GetComponent<WeaponScript>().SetWeaponData(playerData.CurrentWeapon);
-
+			throwedWeapon.GetComponent<WeaponScript>().actualAmmo = playerData.Ammo;
+			
 			throwedWeapon.GetComponent<WeaponScript>().StartMoving();
 			
 			playerData.CurrentWeapon = playerData.DefaultWeapon;

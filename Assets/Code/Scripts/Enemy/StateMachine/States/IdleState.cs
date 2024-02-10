@@ -1,8 +1,24 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-// using UnityEngine.UIElements;
+using UnityEngine;
 
+namespace Enemy
+{
+
+public class IdleState : EnemyBaseState{
+
+    public IdleState(){
+        name = EnemyState.Idle;
+    }
+
+    public override void EnterState(EnemyStateMannager enemy){
+        Debug.Log("IdleState");
+    }
+
+    public override void UpdateState(EnemyStateMannager enemy){
+
+    }
+}
+
+}
 // public class IdleState : MonoBehaviour
 // {
 // 	private StateMachine stateMachine;
