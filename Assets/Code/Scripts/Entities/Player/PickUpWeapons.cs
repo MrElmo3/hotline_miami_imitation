@@ -3,6 +3,9 @@ using Player;
 using UnityEngine;
 using Weapons;
 
+namespace Player
+{
+
 public class PickUpWeapons : MonoBehaviour{
 
 	[SerializeField] private AudioClip pickUp;
@@ -27,12 +30,11 @@ public class PickUpWeapons : MonoBehaviour{
 	public void PickUp(){
 		if(weapon != null){
 			playerData.Ammo = weapon.GetComponent<WeaponScript>().actualAmmo;
-			if(playerData.Ammo == -1)
-				playerData.Ammo = weapon.GetComponent<WeaponScript>().WeaponData.Ammo;
-			WeaponDataSO weaponData = weapon.GetComponent<WeaponScript>().WeaponData;
-			playerData.CurrentWeapon = weaponData;
+			playerData.CurrentWeapon = weapon.GetComponent<WeaponScript>().weapon;
 			//AudioManager.Instance.Play(pickUp);
 			Destroy(weapon);
 		}
 	}
+}
+
 }

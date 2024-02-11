@@ -1,6 +1,8 @@
-using Player;
 using UnityEngine;
 using Weapons;
+
+namespace Player
+{
 
 public class ThrowWeapons : MonoBehaviour {
 	
@@ -12,13 +14,13 @@ public class ThrowWeapons : MonoBehaviour {
 	private GameObject WeaponContainer;
 	
 	private void Start() {
-		playerData = GetComponent<PlayerController>().playerData;
+		playerData = PlayerController.Instance.playerData;
 		WeaponContainer = GameObject.Find("WeaponContainer");
 	}
 	
 	public void Throw(){
 		Vector2 position = transform.position + transform.right * offsetMagnitude;
-		if(playerData.CurrentWeapon.WeaponType != WeaponsEnum.UNARMED){
+		if(playerData.CurrentWeapon != WeaponType.UNARMED){
 
 			GameObject throwedWeapon = Instantiate(weaponPrefab, position, transform.rotation, WeaponContainer.transform);
 			throwedWeapon.GetComponent<WeaponScript>().SetWeaponData(playerData.CurrentWeapon);
@@ -30,4 +32,6 @@ public class ThrowWeapons : MonoBehaviour {
 			//AudioManager.Instance.Play(throwWeapon);
 		}
 	}
+}
+
 }

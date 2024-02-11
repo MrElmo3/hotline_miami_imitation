@@ -7,7 +7,7 @@ namespace Player{
 		[field: SerializeField] public float Speed { get; private set; }
 		[field: SerializeField] public float RotateSpeed { get; private set; }
 		[field: SerializeField] public int Ammo { get; set; }
-		[field: SerializeField] public WeaponDataSO DefaultWeapon { get; private set; }
+		[field: SerializeField] public WeaponType DefaultWeapon { get; private set; }
 		
 	}
 }

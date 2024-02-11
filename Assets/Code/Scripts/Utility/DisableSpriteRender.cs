@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public  class  DisableSpriteRender : MonoBehaviour {
+/// <summary>
+/// Class for disable sprite renderer
+/// </summary>
+public class DisableSpriteRender : MonoBehaviour {
 
 	SpriteRenderer spriteRenderer;
 
