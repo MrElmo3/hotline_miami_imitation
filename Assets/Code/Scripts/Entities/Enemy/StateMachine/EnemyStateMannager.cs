@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEditor;
 
 namespace Enemy
 {
@@ -15,11 +15,13 @@ public enum EnemyState{
 }
 
 public class EnemyStateMannager : MonoBehaviour {
-	
+
 	[SerializeField] private EnemyState startState;
 	[SerializeField] private EnemyState currentState;
 	private EnemyBaseState _currentState;
 	private EnemyState lastState;
+
+
 
 #region States
 	IdleState idleState = new IdleState();
@@ -40,7 +42,7 @@ public class EnemyStateMannager : MonoBehaviour {
 	}
 
 	private void OnValidate() {
-		if(_currentState != null){
+		if(EditorApplication.isPlayingOrWillChangePlaymode){
 			if(_currentState.name != currentState)
 				ChangeState(currentState);
 		}
