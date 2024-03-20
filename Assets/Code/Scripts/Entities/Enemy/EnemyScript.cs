@@ -21,7 +21,7 @@ public class EnemyScript : MonoBehaviour {
 
 	private void SetData(){
 		if(EnemyData == null)
-			EnemyData = new EntityDataSO();
+			EnemyData = ScriptableObject.CreateInstance("EntityDataSO") as EntityDataSO;
 		EnemyData.CurrentWeapon = weapon;
 	}
 }

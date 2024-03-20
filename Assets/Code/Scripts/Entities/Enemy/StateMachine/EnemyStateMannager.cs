@@ -42,7 +42,7 @@ public class EnemyStateMannager : MonoBehaviour {
 	}
 
 	private void OnValidate() {
-		if(EditorApplication.isPlayingOrWillChangePlaymode){
+		if(_currentState != null){
 			if(_currentState.name != currentState)
 				ChangeState(currentState);
 		}
